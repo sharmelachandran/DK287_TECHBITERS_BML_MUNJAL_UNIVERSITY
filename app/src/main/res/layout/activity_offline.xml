@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/CL"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".OfflineActivity">
+    <RelativeLayout
+        android:background="#020202"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animationView"
+            android:layout_width="226dp"
+            android:layout_height="181dp"
+            android:layout_above="@+id/textView18"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="43dp"
+            android:layout_marginEnd="251dp"
+            android:layout_marginBottom="21dp"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/nointernetconnection" />
+
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/btn"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="13dp"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="You're Offline"
+            android:textColor="#FAF7F7"
+            android:textSize="20dp" />
+
+        <Button
+            android:id="@+id/btn"
+            android:layout_width="263dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="35dp"
+            android:layout_marginEnd="228dp"
+            android:layout_marginBottom="43dp"
+            android:background="@drawable/background"
+            android:drawableLeft="@drawable/ic_refresh_black_24dp"
+            android:drawablePadding="-50dp"
+            android:gravity="center"
+            android:paddingLeft="100dp"
+            android:text="Try Again"
+            android:textColor="#050505"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.535" />
+    </RelativeLayout>
+
+</RelativeLayout>

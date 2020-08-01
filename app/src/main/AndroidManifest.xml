@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.ad_sih">
+
+    <application
+        android:name=".MyApp"
+        android:allowBackup="true"
+        android:hardwareAccelerated="false"
+        android:largeHeap="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".mrecall" />
+        <activity android:name=".Flim" />
+        <activity android:name=".mmaze" />
+        <activity android:name=".mhome" />
+        <activity android:name=".cmaze"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"/>
+        <activity android:name=".crecall"
+            android:screenOrientation="landscape"
+            tools:ignore="LockedOrientationActivity"/>
+        <activity android:name=".Cricket"
+            android:screenOrientation="landscape"
+            tools:ignore="LockedOrientationActivity"/>
+        <activity android:name=".chome"
+            android:screenOrientation="landscape"
+            tools:ignore="LockedOrientationActivity"
+            />
+        <activity android:name=".fhome"
+            android:screenOrientation="landscape"
+            tools:ignore="LockedOrientationActivity"/>
+        <activity android:name=".Food"
+            android:screenOrientation="landscape"
+            tools:ignore="LockedOrientationActivity"/>
+        <activity android:name=".frecall"
+            android:screenOrientation="landscape"
+            tools:ignore="LockedOrientationActivity"/>
+        <activity android:name=".fmaze"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"/>
+        <activity android:name=".home"
+            android:screenOrientation="landscape"
+            tools:ignore="LockedOrientationActivity"/>
+
+        <activity android:name=".Score"
+            android:screenOrientation="landscape"
+            tools:ignore="LockedOrientationActivity"/>
+        <activity android:name=".nrecall"
+            android:screenOrientation="landscape"
+            tools:ignore="LockedOrientationActivity"/>
+        <activity android:name=".nmaze"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"/>
+        <activity android:name=".Nature"
+            android:screenOrientation="landscape"
+            tools:ignore="LockedOrientationActivity"/>
+        <activity android:name=".OfflineActivity"
+            android:screenOrientation="landscape"
+            tools:ignore="LockedOrientationActivity"/>
+        <activity android:name=".theme"
+            android:screenOrientation="landscape"
+            tools:ignore="LockedOrientationActivity"/>
+        <activity android:name=".profile"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"/>
+        <activity android:name=".register"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"/>
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fhorbg"
+    tools:context=".frecall">
+    <Button
+        android:id="@+id/h"
+        android:layout_width="84dp"
+        android:layout_height="58dp"
+        android:background="@drawable/fh"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.016"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="372dp"
+        android:layout_height="31dp"
+        android:gravity="center"
+        android:text="Recall the words which you said in level 1"
+        android:textColor="#fff"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.529"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.139" />
+
+    <TextView
+        android:id="@+id/w1"
+        android:layout_width="106dp"
+        android:layout_height="28dp"
+        android:background="@drawable/sframe"
+        android:fontFamily="@font/fog1"
+        android:gravity="center"
+        android:text="Word 1"
+        android:textAlignment="center"
+        android:textColor="#fff"
+        android:textSize="8dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/speech"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.278"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintVertical_bias="0.313" />
+
+    <TextView
+        android:id="@+id/w2"
+        android:layout_width="106dp"
+        android:layout_height="28dp"
+        android:background="@drawable/sframe"
+        android:fontFamily="@font/fog1"
+        android:gravity="center"
+        android:text="Word 2"
+        android:textAlignment="center"
+        android:textColor="#fff"
+        android:textSize="8dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/speech"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.499"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintVertical_bias="0.313" />
+
+    <TextView
+        android:id="@+id/w3"
+        android:layout_width="106dp"
+        android:layout_height="28dp"
+        android:background="@drawable/sframe"
+        android:fontFamily="@font/fog1"
+        android:gravity="center"
+        android:text="Word 3"
+        android:textAlignment="center"
+        android:textColor="#fff"
+        android:textSize="8dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/speech"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.753"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintVertical_bias="0.313" />
+
+    <Button
+        android:id="@+id/speech"
+        android:layout_width="82dp"
+        android:layout_height="66dp"
+        android:background="@drawable/fmic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.499"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.6" />
+
+    <Button
+        android:id="@+id/trails"
+        android:layout_width="84dp"
+        android:layout_height="58dp"
+        android:background="@drawable/fround"
+        android:gravity="center"
+        android:text="5 Trials"
+        android:textAlignment="center"
+        android:textColor="#FD070707"
+        android:textSize="12dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.993"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.022" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
