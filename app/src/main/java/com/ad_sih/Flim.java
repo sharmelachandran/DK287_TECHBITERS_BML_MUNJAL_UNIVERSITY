@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.speech.tts.TextToSpeech;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.LinearInterpolator;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,7 +32,7 @@ import smartdevelop.ir.eram.showcaseviewlib.listener.GuideListener;
 
 public class Flim extends AppCompatActivity implements ConnectivityRecevier.ConnectivityRecevierListener{
     Button V1,S1,T,H;
-    TextView tv;
+    TextView P,B,M;
     int count=0,ccount=0,i=0,l=5;
     int f[]={0,0,0};
     private String str[]={"Gun","Ticket","Girl"},str1;
@@ -45,12 +48,13 @@ public class Flim extends AppCompatActivity implements ConnectivityRecevier.Conn
         setContentView(R.layout.activity_flim);
         checkInternetConnection();
         v1=findViewById(R.id.h);
-        v2=findViewById(R.id.textView2);
         v3=findViewById(R.id.trails);
         v4=findViewById(R.id.voice);
         v5=findViewById(R.id.speech);
-        tv=findViewById(R.id.textView2);
-        tv.setText(str[i]);
+        str1=str[0];
+        P=findViewById(R.id.par);
+        B=findViewById(R.id.butterfly);
+        M=findViewById(R.id.monkey);
         V1=findViewById(R.id.voice);
         S1=findViewById(R.id.speech);
         T=findViewById(R.id.trails);
@@ -67,9 +71,6 @@ public class Flim extends AppCompatActivity implements ConnectivityRecevier.Conn
                     public void onDismiss(View view) {
                         switch (view.getId()) {
                             case R.id.h:
-                                builder.setTitle("Word").setContentText("Remember words shown here till game ends").setTargetView(v2).build();
-                                break;
-                            case R.id.textView2:
                                 builder.setTitle("Trials").setContentText("You have 5 trials totally\nfor 3 upcoming words").setTargetView(v3).build();
                                 break;
                             case R.id.trails:
@@ -79,6 +80,8 @@ public class Flim extends AppCompatActivity implements ConnectivityRecevier.Conn
                                 builder.setTitle("Mic").setContentText("You have to say each upcoming word by clicking this mic").setTargetView(v5).build();
                                 break;
                             case R.id.speech:
+                                P.setBackgroundResource(R.drawable.nar);
+                                startFlash(P);
                                 return;
                         }
                         mGuideView = builder.build();
@@ -110,7 +113,6 @@ public class Flim extends AppCompatActivity implements ConnectivityRecevier.Conn
         V1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                str1=tv.getText().toString();
                 int speech =textToSpeech.speak(str1,TextToSpeech.QUEUE_FLUSH,null);
             }
         });
@@ -129,6 +131,16 @@ public class Flim extends AppCompatActivity implements ConnectivityRecevier.Conn
                 mGuideView.updateGuideViewLocation();
             }
         });
+    }
+    void startFlash(TextView c)
+    {
+        Animation animation=new AlphaAnimation(1,0);
+        animation.setDuration(200);
+        animation.setInterpolator(new LinearInterpolator());
+        animation.setRepeatCount(2);
+        animation.setRepeatMode(Animation.INFINITE);
+        c.startAnimation(animation);
+
     }
     private void checkInternetConnection(){
         boolean isConnected=ConnectivityRecevier.isConnected();
@@ -156,56 +168,6 @@ public class Flim extends AppCompatActivity implements ConnectivityRecevier.Conn
         registerReceiver(connectivityRecevier,intentFilter);
         MyApp.getInstance().setConnectivityListner(this);
     }
-    /*void hint(){
-        new TTFancyGifDialog.Builder(Flim.this)
-                .setTitle("Speaker")
-                .setMessage("You can hear the pronunciation of shown word by clicking Speaker")
-                .setPositiveBtnText("GOT IT")
-                .setPositiveBtnBackground("#22b573")
-                .setGifResource(R.drawable.ic_speaker_foreground)      //pass your gif, png or jpg
-                .isCancellable(false)
-                .OnPositiveClicked(new TTFancyGifDialogListener() {
-                    @Override
-                    public void OnClick() {
-                        hint1();
-                    }
-                })
-                .build();
-    }
-    void hint1(){
-        new TTFancyGifDialog.Builder(Flim.this)
-                .setTitle("Mic")
-                .setMessage("You have to say the shown word by clicking Mic for each word")
-                .setPositiveBtnText("GOT IT")
-                .setPositiveBtnBackground("#22b573")
-                .setGifResource(R.drawable.ic_mic_foreground)      //pass your gif, png or jpg
-                .isCancellable(false)
-                .OnPositiveClicked(new TTFancyGifDialogListener() {
-                    @Override
-                    public void OnClick() {
-                        hint2();
-                        //Toast.makeText(getApplicationContext(),"Remember upcoming words till the game ends\n You have only 5 trails",Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .build();
-    }
-    void hint2(){
-        new TTFancyGifDialog.Builder(Flim.this)
-                .setTitle("Instruction")
-                .setMessage("Remember upcoming words till the game ends\n You have only 5 trails for 3 words")
-                .setPositiveBtnText("GOT IT")
-                .setPositiveBtnBackground("#22b573")//pass your gif, png or jpg
-                .isCancellable(false)
-                .OnPositiveClicked(new TTFancyGifDialogListener() {
-                    @Override
-                    public void OnClick() {
-                        Toast.makeText(getApplicationContext(),"Level 1 starts",Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .build();
-    }
-
-     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -216,7 +178,7 @@ public class Flim extends AppCompatActivity implements ConnectivityRecevier.Conn
                     assert result1 != null;
                     final String s = result1.get(0);
                     String u = s.toLowerCase();
-                    String m1=tv.getText().toString().toLowerCase();
+                    String m1=str1.toLowerCase();
                     count++;
                     l=5-count;
                     T.setText(l+" Trials");
@@ -224,7 +186,7 @@ public class Flim extends AppCompatActivity implements ConnectivityRecevier.Conn
                         ccount++;
                         i++;
                         if(i<3) {
-                            tv.setText(str[i]);
+                            str1=str[i];
                             Toast.makeText(getApplicationContext(), "SUPER!!!\nTouch mic and say "+str[i], Toast.LENGTH_LONG).show();
                         }
                         else {
@@ -240,15 +202,25 @@ public class Flim extends AppCompatActivity implements ConnectivityRecevier.Conn
                         if(f[i]>=3&&i<2)
                         {
                             i++;
-                            tv.setText(str[i]);
+                            str1=str[i];
                         }
                         else if(l==0||i==3)
                         {
                             gotonext();
                         }
                         else{
-                            Toast.makeText(getApplicationContext(),"Touch mic and say "+m1+"\nYou have "+l+" Trails",Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(),"Touch mic and say "+m1+"\nYou have "+l+" Trials",Toast.LENGTH_LONG).show();
                         }
+                    }
+                    if(i==1){
+                        P.setBackgroundResource(R.color.grass);
+                        B.setBackgroundResource(R.drawable.nar);
+                        startFlash(B);
+                    }
+                    else if(i==2) {
+                        B.setBackgroundResource(R.color.grass);
+                        M.setBackgroundResource(R.drawable.nar);
+                        startFlash(M);
                     }
                     break;
                 }
@@ -256,36 +228,17 @@ public class Flim extends AppCompatActivity implements ConnectivityRecevier.Conn
         }
     }
     private void gotonext(){
-        String s ="";
-        if(ccount==3)
-        {
-            s="SUPER!! You done very well"+"\nRemember the words:\nGun\nTicket\nGirl";
-        }else
-            s="Remember the words:\nGun\nTicket\nGirl\nTill the game ends";
-
-        storedata(s);
+        //call firebase storing function
+        storedata();
     }
-    private  void storedata(String s){
+    private  void storedata(){
         FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
         DatabaseReference register = firebaseDatabase.getReference().child(FirebaseAuth.getInstance().getUid()).child("Entertainment");
         register.child("MMSE").child("Word_registration").setValue(ccount);
         register.child("AD_Finder").child("Word_registration").setValue(ccount);
-        new TTFancyGifDialog.Builder(Flim.this)
-                .setTitle("Results")
-                .setMessage(s)
-                .setPositiveBtnText("GOT IT")
-                .setPositiveBtnBackground("#22b573")//pass your gif, png or jpg
-                .isCancellable(false)
-                .OnPositiveClicked(new TTFancyGifDialogListener() {
-                    @Override
-                    public void OnClick() {
-                        Intent i = new Intent(getApplicationContext(), mhome.class);
-                        i.putExtra("level",2);
-                        startActivity(i);unregisterReceiver(connectivityRecevier);finish();
-
-                    }
-                })
-                .build();
+        Intent i = new Intent(getApplicationContext(), mhome.class);
+        i.putExtra("level",2);
+        startActivity(i);unregisterReceiver(connectivityRecevier);finish();
     }
     public void speak(){
         Intent i=new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);

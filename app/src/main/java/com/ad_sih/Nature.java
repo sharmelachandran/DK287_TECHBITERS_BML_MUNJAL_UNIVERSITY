@@ -310,8 +310,6 @@ public class Nature extends AppCompatActivity implements ConnectivityRecevier.Co
         final TextView tv = (TextView) dialog.findViewById(R.id.res);
         Button button = (Button)dialog.findViewById(R.id.buttonOk);
         if(count==3)
-
-
         tv.setText(s);
         button.setOnClickListener(new View.OnClickListener() {
 

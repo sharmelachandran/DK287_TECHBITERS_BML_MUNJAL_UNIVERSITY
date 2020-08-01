@@ -4,22 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/mwbg"
     tools:context=".Flim">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="96dp"
-        android:layout_height="24dp"
-        android:gravity="center"
-        android:text="Ball"
-        android:textColor="#050000"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.413" />
 
     <!-- <ListView
         android:id="@+id/listview"
@@ -31,30 +18,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.102" />-->
-
-    <Button
-        android:id="@+id/voice"
-        android:layout_width="72dp"
-        android:layout_height="72dp"
-        android:background="@drawable/ic_volume_up_black_24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.25"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.559" />
-
-    <Button
-        android:id="@+id/speech"
-        android:layout_width="72dp"
-        android:layout_height="72dp"
-        android:background="@drawable/ic_mic_black_24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.746"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.559" />
 
     <!--<Button
         android:id="@+id/next"
@@ -70,37 +33,113 @@
         app:layout_constraintVertical_bias="0.862" />-->
 
     <Button
+        android:id="@+id/voice"
+        android:layout_width="55dp"
+        android:layout_height="53dp"
+        android:background="@drawable/mspeaker"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.729"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.821" />
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="56dp"
+        android:layout_height="87dp"
+        android:text=" "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.223"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.53" />
+
+    <TextView
+        android:id="@+id/par"
+        android:layout_width="28dp"
+        android:layout_height="17dp"
+        android:background="@color/grass"
+        app:layout_constraintBottom_toBottomOf="@+id/textView19"
+        app:layout_constraintEnd_toStartOf="@+id/textView19"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView19"
+        app:layout_constraintVertical_bias="0.098" />
+
+    <TextView
+        android:id="@+id/butterfly"
+        android:layout_width="28dp"
+        android:layout_height="17dp"
+        android:background="@color/grass"
+        app:layout_constraintBottom_toBottomOf="@+id/textView19"
+        app:layout_constraintEnd_toStartOf="@+id/textView19"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/par"
+        app:layout_constraintVertical_bias="0.261" />
+
+    <TextView
+        android:id="@+id/monkey"
+        android:layout_width="28dp"
+        android:layout_height="17dp"
+        android:background="@color/grass"
+        app:layout_constraintBottom_toBottomOf="@+id/textView19"
+        app:layout_constraintEnd_toStartOf="@+id/textView19"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/butterfly"
+        app:layout_constraintVertical_bias="0.47" />
+
+    <Button
+        android:id="@+id/speech"
+        android:layout_width="55dp"
+        android:layout_height="53dp"
+        android:background="@drawable/mmic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.383"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.82" />
+
+    <Button
         android:id="@+id/trails"
-        android:layout_width="69dp"
-        android:layout_height="64dp"
-        android:background="@drawable/custom_btn"
-        android:text="5 Trails"
-        android:textColor="#FD070707"
+        android:layout_width="55dp"
+        android:layout_height="53dp"
+        android:background="@drawable/mround"
+        android:text="5 Trials"
+        android:textColor="#fff"
         android:textSize="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.976"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.722" />
+        app:layout_constraintVertical_bias="0.044" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="341dp"
-        android:layout_height="wrap_content"
+        android:layout_width="361dp"
+        android:layout_height="32dp"
         android:text="Remember the following words till the GAME ENDS"
-        android:textColor="#000000"
+        android:textAlignment="center"
+        android:textColor="#fff"
         android:textSize="14dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/trails"
+        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintStart_toEndOf="@+id/h"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.174" />
+        app:layout_constraintVertical_bias="0.076" />
 
     <Button
         android:id="@+id/h"
         android:layout_width="55dp"
         android:layout_height="53dp"
-        android:background="@drawable/home"
+        android:background="@drawable/mh"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.016"

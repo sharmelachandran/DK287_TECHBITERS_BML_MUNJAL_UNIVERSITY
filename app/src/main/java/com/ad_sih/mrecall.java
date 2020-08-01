@@ -32,7 +32,7 @@ import smartdevelop.ir.eram.showcaseviewlib.config.Gravity;
 import smartdevelop.ir.eram.showcaseviewlib.listener.GuideListener;
 
 public class mrecall extends AppCompatActivity implements ConnectivityRecevier.ConnectivityRecevierListener{
-    TextView tv;
+    TextView tv,W1,W2,W3;
     Button S1,F,T,H;
     private String[] str ={"Gun","Ticket","Girl"};
     int i=0,count=0,flag0=0,flag1=0,flag2=0,l=5,ccout=0;
@@ -51,7 +51,9 @@ public class mrecall extends AppCompatActivity implements ConnectivityRecevier.C
         checkInternetConnection();
         v1=findViewById(R.id.textView3);
         v2=findViewById(R.id.speech);
-        tv=findViewById(R.id.textView4);
+        W1=findViewById(R.id.w1);
+        W2=findViewById(R.id.w2);
+        W3=findViewById(R.id.w3);
         S1=findViewById(R.id.speech);
         //F=findViewById(R.id.next);
         T=findViewById(R.id.trails);
@@ -198,20 +200,19 @@ public class mrecall extends AppCompatActivity implements ConnectivityRecevier.C
                     T.setText(l+" Trials");
                     if (s1.equals(str[0].toLowerCase()) && flag0 == 0) {
                         ccout++;
+                        W1.setText("Gun");
                         Toast.makeText(getApplicationContext(), "SUPER!!!"+s1+" is correct", Toast.LENGTH_LONG).show();
                         flag0 = 1;
-                        tv.setText("Nextword??");
                     } else if (s1.equals(str[1].toLowerCase()) && flag1 == 0) {
                         ccout++;
                         Toast.makeText(getApplicationContext(), "SUPER!!!"+s1+" is correct", Toast.LENGTH_LONG).show();
                         flag1 = 1;
-                        tv.setText("Nextword??");
-
+                        W2.setText("Ticket");
                     } else if (s1.equals(str[2].toLowerCase()) && flag2 == 0) {
                         ccout++;
                         Toast.makeText(getApplicationContext(), "SUPER!!!\n"+s1+" is correct", Toast.LENGTH_LONG).show();
                         flag2 = 1;
-                        tv.setText("Nextword??");
+                        W3.setText("Girl");
                     } else {
                         Toast.makeText(getApplicationContext(),"Wrong:("+s1+"\nTry to recollect the words\nStill you have "+l+" Trails",Toast.LENGTH_LONG).show();
                     }

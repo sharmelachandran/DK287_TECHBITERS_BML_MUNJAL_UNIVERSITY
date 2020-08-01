@@ -58,211 +58,149 @@ public class mhome extends AppCompatActivity implements ConnectivityRecevier.Con
         if(level==1)
         {
             ring.start();
-            Runnable r=new Runnable() {
-                @Override
-                public void run() {
-                    b1.setBackgroundResource(R.drawable.lockopen);
-                }
-            };
-            h.postDelayed(r,1000);
             Runnable r1=new Runnable() {
                 @Override
                 public void run() {
-                    b1.setBackgroundResource(R.drawable.number1);
+                    b1.setBackgroundResource(R.drawable.m1);
                     f1=1;
                     startanim(b1);
                 }
             };
-            h.postDelayed(r1,2000);
+            h.postDelayed(r1,1000);
         }
         else if(level==2){
             ring.start();
-            b1.setBackgroundResource(R.drawable.number1);f1=2;
-            Runnable r=new Runnable() {
-                @Override
-                public void run() {
-                    b2.setBackgroundResource(R.drawable.lockopen);
-                }
-            };
-            h.postDelayed(r,1000);
+            b1.setBackgroundResource(R.drawable.m1);f1=2;
             Runnable r1=new Runnable() {
                 @Override
                 public void run() {
-                    b2.setBackgroundResource(R.drawable.number2);
+                    b2.setBackgroundResource(R.drawable.m2);
                     startanim(b2);
                     f2=1;
                 }
             };
-            h.postDelayed(r1,2000);
+            h.postDelayed(r1,1000);
         }
-        else if(level==3){
+        /*else if(level==3){
             ring.start();
-            b1.setBackgroundResource(R.drawable.number1);f1=2;
-            b2.setBackgroundResource(R.drawable.number2);f2=2;
-            Runnable r=new Runnable() {
-                @Override
-                public void run() {
-                    b3.setBackgroundResource(R.drawable.lockopen);
-                }
-            };
-            h.postDelayed(r,1000);
+            b1.setBackgroundResource(R.drawable.m1);f1=2;
+            b2.setBackgroundResource(R.drawable.m2);f2=2;
             Runnable r1=new Runnable() {
                 @Override
                 public void run() {
-                    b3.setBackgroundResource(R.drawable.number3);
+                    b3.setBackgroundResource(R.drawable.m3);
                     startanim(b3);
                     f3=1;
                 }
             };
-            h.postDelayed(r1,2000);
+            h.postDelayed(r1,1000);
         }
         else if(level==4){
             ring.start();
-            b1.setBackgroundResource(R.drawable.number1);f1=2;
-            b2.setBackgroundResource(R.drawable.number2);f2=2;
-            b3.setBackgroundResource(R.drawable.number3);f3=2;
-            Runnable r=new Runnable() {
-                @Override
-                public void run() {
-                    b4.setBackgroundResource(R.drawable.lockopen);
-                }
-            };
-            h.postDelayed(r,1000);
+            b1.setBackgroundResource(R.drawable.m1);f1=2;
+            b2.setBackgroundResource(R.drawable.m2);f2=2;
+            b3.setBackgroundResource(R.drawable.m3);f3=2;
             Runnable r1=new Runnable() {
                 @Override
                 public void run() {
-                    b4.setBackgroundResource(R.drawable.number4);
+                    b4.setBackgroundResource(R.drawable.m4);
                     startanim(b4);
                     f4=1;
                 }
             };
-            h.postDelayed(r1,2000);
-        }
+            h.postDelayed(r1,1000);
+        }*/
         else if(level==5){
             ring.start();
-            b1.setBackgroundResource(R.drawable.number1);f1=2;
-            b2.setBackgroundResource(R.drawable.number2);f2=2;
-           // b3.setBackgroundResource(R.drawable.number3);f3=2;
-            //b4.setBackgroundResource(R.drawable.number4);f4=2;
-            Runnable r=new Runnable() {
-                @Override
-                public void run() {
-                    b5.setBackgroundResource(R.drawable.lockopen);
-                }
-            };
-            h.postDelayed(r,1000);
+            b1.setBackgroundResource(R.drawable.m1);f1=2;
+            b2.setBackgroundResource(R.drawable.m2);f2=2;
+            //b3.setBackgroundResource(R.drawable.m3);f3=2;
+            //b4.setBackgroundResource(R.drawable.m4);f4=2;
             Runnable r1=new Runnable() {
                 @Override
                 public void run() {
-                    b5.setBackgroundResource(R.drawable.number5);
+                    b5.setBackgroundResource(R.drawable.m5);
                     startanim(b5);
                     f5=1;
                 }
             };
-            h.postDelayed(r1,2000);
+            h.postDelayed(r1,1000);
         }
-        else if(level==6){
+        /*else if(level==6){
             ring.start();
-            b1.setBackgroundResource(R.drawable.number1);f1=2;
-            b2.setBackgroundResource(R.drawable.number2);f2=2;
-            b3.setBackgroundResource(R.drawable.number3);f3=2;
-            b4.setBackgroundResource(R.drawable.number4);f4=2;
-            b5.setBackgroundResource(R.drawable.number5);f5=2;
-            Runnable r=new Runnable() {
-                @Override
-                public void run() {
-                    b6.setBackgroundResource(R.drawable.lockopen);
-                }
-            };
-            h.postDelayed(r,1000);
+            b1.setBackgroundResource(R.drawable.m1);f1=2;
+            b2.setBackgroundResource(R.drawable.m2);f2=2;
+            b3.setBackgroundResource(R.drawable.m3);f3=2;
+            b4.setBackgroundResource(R.drawable.m4);f4=2;
+            b5.setBackgroundResource(R.drawable.m5);f5=2;
             Runnable r1=new Runnable() {
                 @Override
                 public void run() {
-                    b6.setBackgroundResource(R.drawable.number6);
+                    b6.setBackgroundResource(R.drawable.m6);
                     startanim(b6);
                     f6=1;
                 }
             };
-            h.postDelayed(r1,2000);
+            h.postDelayed(r1,1000);
         }
         else if(level==7){
             ring.start();
-            b1.setBackgroundResource(R.drawable.number1);f1=2;
-            b2.setBackgroundResource(R.drawable.number2);f2=2;
-            b3.setBackgroundResource(R.drawable.number3);f3=2;
-            b4.setBackgroundResource(R.drawable.number4);f4=2;
-            b5.setBackgroundResource(R.drawable.number5);f5=2;
-            b6.setBackgroundResource(R.drawable.number6);f6=2;
-            Runnable r=new Runnable() {
-                @Override
-                public void run() {
-                    b7.setBackgroundResource(R.drawable.lockopen);
-                }
-            };
-            h.postDelayed(r,1000);
+            b1.setBackgroundResource(R.drawable.m1);f1=2;
+            b2.setBackgroundResource(R.drawable.m2);f2=2;
+            b3.setBackgroundResource(R.drawable.m3);f3=2;
+            b4.setBackgroundResource(R.drawable.m4);f4=2;
+            b5.setBackgroundResource(R.drawable.m5);f5=2;
+            b6.setBackgroundResource(R.drawable.m6);f6=2;
             Runnable r1=new Runnable() {
                 @Override
                 public void run() {
-                    b7.setBackgroundResource(R.drawable.number7);
+                    b7.setBackgroundResource(R.drawable.m7);
                     startanim(b7);
                     f7=1;
                 }
             };
-            h.postDelayed(r1,2000);
+            h.postDelayed(r1,1000);
         }
         else if(level==8){
             ring.start();
-            b1.setBackgroundResource(R.drawable.number1);f1=2;
-            b2.setBackgroundResource(R.drawable.number2);f2=2;
-            b3.setBackgroundResource(R.drawable.number3);f3=2;
-            b4.setBackgroundResource(R.drawable.number4);f4=2;
-            b5.setBackgroundResource(R.drawable.number5);f5=2;
-            b6.setBackgroundResource(R.drawable.number6);f6=2;
-            b7.setBackgroundResource(R.drawable.number7);f7=2;
-            Runnable r=new Runnable() {
-                @Override
-                public void run() {
-                    b8.setBackgroundResource(R.drawable.lockopen);
-                }
-            };
-            h.postDelayed(r,1000);
+            b1.setBackgroundResource(R.drawable.m1);f1=2;
+            b2.setBackgroundResource(R.drawable.m2);f2=2;
+            b3.setBackgroundResource(R.drawable.m3);f3=2;
+            b4.setBackgroundResource(R.drawable.m4);f4=2;
+            b5.setBackgroundResource(R.drawable.m5);f5=2;
+            b6.setBackgroundResource(R.drawable.m6);f6=2;
+            b7.setBackgroundResource(R.drawable.m7);f7=2;
+            
             Runnable r1=new Runnable() {
                 @Override
                 public void run() {
-                    b8.setBackgroundResource(R.drawable.number8);
+                    b8.setBackgroundResource(R.drawable.m8);
                     startanim(b8);
                     f8=1;
                 }
             };
-            h.postDelayed(r1,2000);
+            h.postDelayed(r1,1000);
         }
         else if(level==9){
             ring.start();
-            b1.setBackgroundResource(R.drawable.number1);f1=2;
-            b2.setBackgroundResource(R.drawable.number2);f2=2;
-            b3.setBackgroundResource(R.drawable.number3);f3=2;
-            b4.setBackgroundResource(R.drawable.number4);f4=2;
-            b5.setBackgroundResource(R.drawable.number5);f5=2;
-            b6.setBackgroundResource(R.drawable.number6);f6=2;
-            b7.setBackgroundResource(R.drawable.number7);f7=2;
-            b8.setBackgroundResource(R.drawable.number8);f8=2;
-            Runnable r=new Runnable() {
-                @Override
-                public void run() {
-                    b9.setBackgroundResource(R.drawable.lockopen);
-                }
-            };
-            h.postDelayed(r,1000);
+            b1.setBackgroundResource(R.drawable.m1);f1=2;
+            b2.setBackgroundResource(R.drawable.m2);f2=2;
+            b3.setBackgroundResource(R.drawable.m3);f3=2;
+            b4.setBackgroundResource(R.drawable.m4);f4=2;
+            b5.setBackgroundResource(R.drawable.m5);f5=2;
+            b6.setBackgroundResource(R.drawable.m6);f6=2;
+            b7.setBackgroundResource(R.drawable.m7);f7=2;
+            b8.setBackgroundResource(R.drawable.m8);f8=2;
             Runnable r1=new Runnable() {
                 @Override
                 public void run() {
-                    b9.setBackgroundResource(R.drawable.number9);
+                    b9.setBackgroundResource(R.drawable.m9);
                     startanim(b9);
                     f9=1;
                 }
             };
-            h.postDelayed(r1,2000);
-        }
+            h.postDelayed(r1,1000);
+        }*/
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
