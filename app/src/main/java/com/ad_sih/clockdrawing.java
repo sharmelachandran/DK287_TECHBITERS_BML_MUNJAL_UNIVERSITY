@@ -62,7 +62,7 @@ public class clockdrawing extends AppCompatActivity implements ConnectivityRecev
     private static final int PICK_FILE=1023;
     private  String theme,store;
     private DatabaseReference ref;
-    int count=0;
+    int clock_score;
     MyCanvas myCanvas;
     ConnectivityRecevier connectivityRecevier=new ConnectivityRecevier();
     @Override
@@ -177,7 +177,6 @@ public class clockdrawing extends AppCompatActivity implements ConnectivityRecev
         super.onResume();
         final IntentFilter intentFilter=new IntentFilter();
         intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
-
         registerReceiver(connectivityRecevier,intentFilter);
         MyApp.getInstance().setConnectivityListner(this);
     }
@@ -321,36 +320,36 @@ public class clockdrawing extends AppCompatActivity implements ConnectivityRecev
                                     Arrays.asList(label).contains("airplane") || Arrays.asList(label).contains("vase") ||
                                     Arrays.asList(label).contains("dining table") || Arrays.asList(label).contains("laptop")))
                             {
-                                        count=0;
+                                        clock_score=0;
                             }
                             else if(Arrays.asList(label).contains("clock")){
                                 int i=Arrays.asList(label).indexOf("clock");
-                                if(Double.parseDouble(score[i])>=0.7f){
-                                    count=2;
+                                Double d=Double.valueOf(score[i]);
+                                if(d>=0.7000000000000000){
+                                    clock_score=2;
+
                                 }
                                 else if(Arrays.asList(label).contains("bird")||Arrays.asList(label).contains("tv"))
                                 {
-                                    count=2;
+                                    clock_score=2;
                                 }
                                 else{
-                                    count=1;
+                                    clock_score=1;
+
                                 }
                             }
-                            else{
-                                count=0;
-                            }
-                            //Toast.makeText(getApplicationContext(),s,Toast.LENGTH_SHORT).show();
-
+                            storedata(clock_score);
                         }
                         @Override
                         public void onError(ANError error) {
                             // handle error
-                            Toast.makeText(getApplicationContext(),"Error in upload method",Toast.LENGTH_SHORT).show();
-                            count=0;
+                            //Toast.makeText(getApplicationContext(),"Error in upload method",Toast.LENGTH_SHORT).show();
 
                         }
+
                     });
-            storedata();
+
+
            /* StorageReference Folder= FirebaseStorage.getInstance().getReference().child("nature").child("clockdrawing");
             final StorageReference file_name=Folder.child("image"+uri1.getLastPathSegment());
             file_name.putFile(uri1).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -376,35 +375,33 @@ public class clockdrawing extends AppCompatActivity implements ConnectivityRecev
         {
             e.printStackTrace();
         }
-        /*Intent i=new Intent(getApplicationContext(),home.class);
-        i.putExtra("level",4);
-        startActivity(i);unregisterReceiver(connectivityRecevier);finish();*/
 
     }
-    private void storedata()
+    private void storedata(int clock_score)
     {
+        Toast.makeText(getApplicationContext(),"storedata: "+clock_score,Toast.LENGTH_SHORT).show();
         FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
         DatabaseReference register = firebaseDatabase.getReference().child(FirebaseAuth.getInstance().getUid()).child(store);
-        register.child("AD_Finder").child("Clock").child("score").setValue(count);
-        register.child("MINI_COG").child("Clock").child("score").setValue(count);
+        register.child("AD_Finder").child("Clock").setValue(clock_score);
+        register.child("MINI_COG").child("Clock").setValue(clock_score);
         if(theme.equals("nature")) {
             Intent i = new Intent(getApplicationContext(), home.class);
             i.putExtra("level", 4);
-            startActivity(i);unregisterReceiver(connectivityRecevier);finish();
+            startActivity(i);finish();
         }
         else if(theme.equals("food")){
             Intent i = new Intent(getApplicationContext(), fhome.class);
             i.putExtra("level", 4);
-            startActivity(i);unregisterReceiver(connectivityRecevier);finish();
+            startActivity(i);finish();
         }
         else if(theme.equals("cricket")){
             Intent i = new Intent(getApplicationContext(), chome.class);
             i.putExtra("level", 4);
-            startActivity(i);unregisterReceiver(connectivityRecevier);finish();
+            startActivity(i);finish();
         }else if(theme.equals("entertainment")){
             Intent i = new Intent(getApplicationContext(), mhome.class);
             i.putExtra("level", 4);
-            startActivity(i);unregisterReceiver(connectivityRecevier);finish();
+            startActivity(i);finish();
         }
 
     }

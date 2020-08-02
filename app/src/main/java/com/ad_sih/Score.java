@@ -34,19 +34,19 @@ public class Score extends AppCompatActivity implements ConnectivityRecevier.Con
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_score);
         checkInternetConnection();
-        //flag=getIntent().getIntExtra("theme",1);
-        //Theme=getIntent().getStringExtra("total");
+        flag=getIntent().getIntExtra("theme",1);
+        Theme=getIntent().getStringExtra("total");
         H=findViewById(R.id.h);
         tv=findViewById(R.id.textView1);
         H.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                  Intent i=new Intent(getApplicationContext(),theme.class);
-               // i.putExtra("theme",flag);
+                 i.putExtra("theme",flag);
                 startActivity(i);unregisterReceiver(connectivityRecevier);finish();
             }
         });
-        //calculate();
+        calculate();
     }
     private void checkInternetConnection(){
         boolean isConnected=ConnectivityRecevier.isConnected();
@@ -82,7 +82,7 @@ public class Score extends AppCompatActivity implements ConnectivityRecevier.Con
         register0.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Long[] L = new Long[8];
+                Long[] L = new Long[10];
                 L[0] =(Long)snapshot.child("Orientation").getValue();
                 L[1] =(Long)snapshot.child("Word_registration").getValue();
                 L[2] =(Long)snapshot.child("Maze").child("Wrong_attempt_Ignored").getValue();
@@ -91,8 +91,9 @@ public class Score extends AppCompatActivity implements ConnectivityRecevier.Con
                 L[5] =(Long)snapshot.child("Word_recall").getValue();
                 L[6] =(Long)snapshot.child("Number_crossing").child("score").getValue();
                 L[7] =(Long)snapshot.child("Object_recognition").child("score").getValue();
-                Long x =L[0]+L[1]+L[2]+L[3]+L[4]+L[5]+L[6]+L[7]+4;
-
+                L[8] =(Long)snapshot.child("Clock").getValue();
+                L[9] =(Long)snapshot.child("Pentagon").getValue();
+                Long x =L[0]+L[1]+L[2]+L[3]+L[4]+L[5]+L[6]+L[7]+L[8]+L[9];
                 register0.child("Total").setValue(x);
             }
             @Override
@@ -104,13 +105,15 @@ public class Score extends AppCompatActivity implements ConnectivityRecevier.Con
         register1.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Long[] L = new Long[5];
+                Long[] L = new Long[6];
                 L[0] =(Long)snapshot.child("Orientation").getValue();
                 L[1] =(Long)snapshot.child("Word_registration").getValue();
                 L[2] =(Long)snapshot.child("Instruction_following").child("score").getValue();
                 L[3] =(Long)snapshot.child("Word_recall").getValue();
+                L[5] =(Long)snapshot.child("Pentagon").getValue();
                 L[4] =(Long)snapshot.child("Object_recognition").child("score").getValue();
-                Long x=((L[0]+L[1]+L[2]+L[3]+L[4]+1)*30)/18;
+
+                Long x=((L[0]+L[1]+L[2]+L[3]+L[4]+L[5])*30)/18;
                 register1.child("Total").setValue(x);
                 if(x<=24)
                     f1=1;
@@ -129,25 +132,14 @@ public class Score extends AppCompatActivity implements ConnectivityRecevier.Con
         register2.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Long[] L = new Long[1];
+                Long[] L = new Long[2];
                 L[0] =(Long)snapshot.child("Word_recall").getValue();
-                Long x=L[0]+2;
+                L[1] =(Long)snapshot.child("Clock").getValue();
+                Long x=L[0]+L[1];
                 if(x<4)
                     f2=1;
                 else
                     f2=0;
-                /*if(L[0]==0)
-                    f2=1;
-                    //register2.child("Range").setValue("yes");
-                if(L[0]==1|| L[0]==2)
-                    if(L[1]==0)
-                        register2.child("Range").setValue("yes");
-                    else
-                        register2.child("Range").setValue("no");
-                if(L[0]==3)
-                    f2=0;
-                    //register2.child("Range").setValue("no");*/
-
                 register2.child("Total").setValue(x);
             }
 
@@ -185,16 +177,15 @@ public class Score extends AppCompatActivity implements ConnectivityRecevier.Con
                     x+=L[6];
                 if(x!=null){
                     x=(x*70)/43;
-                register3.child("Total").setValue(x);}
+                register3.child("Total").setValue(x);
+                }
                 else
                     register3.child("Total").setValue(0);
 
                 if(x>=18)
                     f3=1;
-                    //register3.child("Range").setValue("yes");
                 else
                     f3=0;
-                    //register3.child("Range").setValue("no");
             }
 
             @Override
@@ -225,12 +216,11 @@ public class Score extends AppCompatActivity implements ConnectivityRecevier.Con
                         tv.setText("You have symptoms of AD go and have medical checkup as soon as possible");
                     else
                         tv.setText("You are perfect..\n you don't have dementia");
-                    //Toast.makeText(getApplicationContext(),"You have symptoms of AD go and have medical checkup as soon as possible",Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getApplicationContext(),"You have symptoms of AD go and have medical checkup as soon as possible",Toast.LENGTH_SHORT).show();
                 }
                 else{
                     tv.setText("Try some other theme for better results");
                 }
-                    //Toast.makeText(getApplicationContext(),"You are perfect..\n you don't have dementia",Toast.LENGTH_SHORT).show();
             }
 
             @Override

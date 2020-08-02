@@ -58,7 +58,7 @@ public class diagram extends AppCompatActivity implements ConnectivityRecevier.C
     Canvas canvas;
     Button button,btn,H;
     private  String theme,store;
-    private int count=0;
+    private int pentagon_score;
     private static final int PICK_FILE=1023;
     ConnectivityRecevier connectivityRecevier=new ConnectivityRecevier();
     //private DatabaseReference ref;
@@ -261,6 +261,7 @@ public class diagram extends AppCompatActivity implements ConnectivityRecevier.C
         }
     }
     private void screenshot(View view){
+
         final String mfile=new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(System.currentTimeMillis());
         String filename= Environment.getExternalStorageDirectory()+"/sih/"+ mfile+".jpg";
         View root=getWindow().getDecorView().getRootView();
@@ -299,6 +300,7 @@ public class diagram extends AppCompatActivity implements ConnectivityRecevier.C
                             StringBuilder s;
                             JSONArray arr = null;
                             JSONArray arr1 = null;
+
                             try {
                                 arr = response.getJSONArray("labels");
                                 arr1 = response.getJSONArray("scores");
@@ -321,29 +323,27 @@ public class diagram extends AppCompatActivity implements ConnectivityRecevier.C
                             if (Arrays.asList(label).contains("pentagon"))
                             {
                                 int i=Arrays.asList(label).indexOf("pentagon");
-                                if(Double.parseDouble(score[i])>=0.979f){
-                                    count=1;
+                                Double d=Double.valueOf(score[i]);
+                                if(d>=0.9790000000000000){
+                                    pentagon_score=1;
                                 }else{
-                                    count=0;
+                                    pentagon_score=0;
                                 }
 
                             }
                             else{
-                                count=0;
+                                pentagon_score=0;
                             }
-                            //Toast.makeText(getApplicationContext(),count+" ",Toast.LENGTH_SHORT).show();
-
-                            // below code will be executed in the executor provided
-                            // do anything with response
+                            storedata(pentagon_score);
                         }
                         @Override
                         public void onError(ANError error) {
                             // handle error
                             //Toast.makeText(getApplicationContext(),"Error in upload method",Toast.LENGTH_SHORT).show();
-                            count=0;
+
                         }
                     });
-            storedata();
+
            /* StorageReference Folder= FirebaseStorage.getInstance().getReference().child("nature").child("clockdrawing");
             final StorageReference file_name=Folder.child("image"+uri1.getLastPathSegment());
             file_name.putFile(uri1).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -405,34 +405,31 @@ public class diagram extends AppCompatActivity implements ConnectivityRecevier.C
         }*/
 
     }
-    private void storedata() {
+    private void storedata(int score) {
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference register = firebaseDatabase.getReference().child(FirebaseAuth.getInstance().getUid()).child(store);
-        register.child("AD_Finder").child("Pentagon").setValue(count);
-        register.child("MMSE").child("Pentagon").setValue(count);
+        register.child("MMSE").child("Pentagon").setValue(score);
+        score=score*2;
+        register.child("AD_Finder").child("Pentagon").setValue(score);
         if (theme.equals("nature")) {
             Intent i = new Intent(getApplicationContext(), home.class);
             i.putExtra("level", 9);
             startActivity(i);
-            unregisterReceiver(connectivityRecevier);
             finish();
         } else if (theme.equals("food")) {
             Intent i = new Intent(getApplicationContext(), fhome.class);
             i.putExtra("level", 9);
             startActivity(i);
-            unregisterReceiver(connectivityRecevier);
             finish();
         } else if (theme.equals("cricket")) {
             Intent i = new Intent(getApplicationContext(), chome.class);
             i.putExtra("level", 9);
             startActivity(i);
-            unregisterReceiver(connectivityRecevier);
             finish();
         } else if (theme.equals("entertainment")) {
             Intent i = new Intent(getApplicationContext(), mhome.class);
             i.putExtra("level", 9);
             startActivity(i);
-            unregisterReceiver(connectivityRecevier);
             finish();
 
         }
