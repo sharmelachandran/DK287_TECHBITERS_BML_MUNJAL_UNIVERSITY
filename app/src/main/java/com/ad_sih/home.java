@@ -237,7 +237,7 @@ public class home extends AppCompatActivity implements ConnectivityRecevier.Conn
                     Toast.makeText(getApplicationContext(),"Level locked",Toast.LENGTH_SHORT).show();
                 }
             }
-        });/*
+        });
         b3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -252,7 +252,7 @@ public class home extends AppCompatActivity implements ConnectivityRecevier.Conn
                     Toast.makeText(getApplicationContext(),"Level locked",Toast.LENGTH_SHORT).show();
                 }
             }
-        });*/
+        });
         b4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -308,7 +308,7 @@ public class home extends AppCompatActivity implements ConnectivityRecevier.Conn
                     Toast.makeText(getApplicationContext(),"Level locked",Toast.LENGTH_SHORT).show();
                 }
             }
-        });/*
+        });
         b8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -323,7 +323,7 @@ public class home extends AppCompatActivity implements ConnectivityRecevier.Conn
                     Toast.makeText(getApplicationContext(),"Level locked",Toast.LENGTH_SHORT).show();
                 }
             }
-        });*/
+        });
         b9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

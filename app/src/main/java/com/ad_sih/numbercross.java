@@ -804,7 +804,7 @@ public class numbercross extends AppCompatActivity implements ConnectivityRecevi
             else if (ccount < 14 && wcount != 0)
                 Toast.makeText(getApplicationContext(), "BETTER LUCK NEXT TIME :(", Toast.LENGTH_LONG).show();
             Intent i = new Intent(getApplicationContext(), home.class);
-            i.putExtra("level", 9);
+            i.putExtra("level", 8);
             startActivity(i);unregisterReceiver(connectivityRecevier);finish();
     }
     private void startTimer(){

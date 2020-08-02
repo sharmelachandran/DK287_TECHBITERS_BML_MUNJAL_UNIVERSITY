@@ -236,7 +236,7 @@ public class mhome extends AppCompatActivity implements ConnectivityRecevier.Con
                 }
             }
         });
-        /*b3.setOnClickListener(new View.OnClickListener() {
+        b3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(f3==1) {
@@ -250,7 +250,7 @@ public class mhome extends AppCompatActivity implements ConnectivityRecevier.Con
                     Toast.makeText(getApplicationContext(),"Level locked",Toast.LENGTH_SHORT).show();
                 }
             }
-        });*/
+        });
         b4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -306,7 +306,7 @@ public class mhome extends AppCompatActivity implements ConnectivityRecevier.Con
                     Toast.makeText(getApplicationContext(),"Level locked",Toast.LENGTH_SHORT).show();
                 }
             }
-        });/*
+        });
         b8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -321,7 +321,7 @@ public class mhome extends AppCompatActivity implements ConnectivityRecevier.Con
                     Toast.makeText(getApplicationContext(),"Level locked",Toast.LENGTH_SHORT).show();
                 }
             }
-        });*/
+        });
         b9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

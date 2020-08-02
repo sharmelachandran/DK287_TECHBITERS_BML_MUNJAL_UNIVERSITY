@@ -64,7 +64,7 @@ public class chome extends AppCompatActivity implements ConnectivityRecevier.Con
                     startanim(b1);
                 }
             };
-            h.postDelayed(r1,2000);
+            h.postDelayed(r1,1000);
         }
         else if(level==2){
             ring.start();
@@ -77,7 +77,7 @@ public class chome extends AppCompatActivity implements ConnectivityRecevier.Con
                     f2=1;
                 }
             };
-            h.postDelayed(r1,2000);
+            h.postDelayed(r1,1000);
         }
         else if(level==3){
             ring.start();
@@ -91,7 +91,7 @@ public class chome extends AppCompatActivity implements ConnectivityRecevier.Con
                     f3=1;
                 }
             };
-            h.postDelayed(r1,2000);
+            h.postDelayed(r1,1000);
         }
         else if(level==4){
             ring.start();
@@ -106,7 +106,7 @@ public class chome extends AppCompatActivity implements ConnectivityRecevier.Con
                     f4=1;
                 }
             };
-            h.postDelayed(r1,2000);
+            h.postDelayed(r1,1000);
         }
         else if(level==5){
             ring.start();
@@ -122,7 +122,7 @@ public class chome extends AppCompatActivity implements ConnectivityRecevier.Con
                     f5=1;
                 }
             };
-            h.postDelayed(r1,2000);
+            h.postDelayed(r1,1000);
         }
         else if(level==6){
             ring.start();
@@ -140,7 +140,7 @@ public class chome extends AppCompatActivity implements ConnectivityRecevier.Con
                     f6=1;
                 }
             };
-            h.postDelayed(r1,2000);
+            h.postDelayed(r1,1000);
         }
         else if(level==7){
             ring.start();
@@ -158,7 +158,7 @@ public class chome extends AppCompatActivity implements ConnectivityRecevier.Con
                     f7=1;
                 }
             };
-            h.postDelayed(r1,2000);
+            h.postDelayed(r1,1000);
         }
         else if(level==8){
             ring.start();
@@ -177,7 +177,7 @@ public class chome extends AppCompatActivity implements ConnectivityRecevier.Con
                     f8=1;
                 }
             };
-            h.postDelayed(r1,2000);
+            h.postDelayed(r1,1000);
         }
         else if(level==9){
             ring.start();
@@ -197,7 +197,7 @@ public class chome extends AppCompatActivity implements ConnectivityRecevier.Con
                     f9=1;
                 }
             };
-            h.postDelayed(r1,2000);
+            h.postDelayed(r1,1000);
         }
 
 
@@ -240,7 +240,7 @@ public class chome extends AppCompatActivity implements ConnectivityRecevier.Con
                 }
             }
         });
-        /*b3.setOnClickListener(new View.OnClickListener() {
+        b3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(f3==1) {
@@ -254,7 +254,7 @@ public class chome extends AppCompatActivity implements ConnectivityRecevier.Con
                     Toast.makeText(getApplicationContext(),"Level locked",Toast.LENGTH_SHORT).show();
                 }
             }
-        });*/
+        });
         b4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -310,7 +310,7 @@ public class chome extends AppCompatActivity implements ConnectivityRecevier.Con
                     Toast.makeText(getApplicationContext(),"Level locked",Toast.LENGTH_SHORT).show();
                 }
             }
-        });/*
+        });
         b8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -325,7 +325,7 @@ public class chome extends AppCompatActivity implements ConnectivityRecevier.Con
                     Toast.makeText(getApplicationContext(),"Level locked",Toast.LENGTH_SHORT).show();
                 }
             }
-        });*/
+        });
         b9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

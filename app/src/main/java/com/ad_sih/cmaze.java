@@ -1088,7 +1088,7 @@ public class cmaze extends AppCompatActivity implements ConnectivityRecevier.Con
         register.child("AD_Finder").child("Maze").child("Wrong_attempt_Ignored").setValue(adfinder_count);
         register.child("AD_Finder").child("Maze").child("Time_taken").setValue(Time_used_to_solve);
         Intent i=new Intent(getApplicationContext(),chome.class);
-        i.putExtra("level",4);
+        i.putExtra("level",3);
         startActivity(i);unregisterReceiver(connectivityRecevier);finish();
     }
     private  void startAnimation(){
