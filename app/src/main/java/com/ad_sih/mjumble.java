@@ -86,9 +86,6 @@ public class mjumble extends AppCompatActivity implements ConnectivityRecevier.C
                                 builder.setTitle("Timer").setContentText("You have 60 seconds to finish this level").setTargetView(v3).build();
                                 break;
                             case R.id.time:
-                                builder.setTitle("Finish").setContentText("click here once you done with drag and drop").setTargetView(v4).build();
-                                break;
-                            case R.id.fin:
                                 startTimer();
                                 return;
                         }

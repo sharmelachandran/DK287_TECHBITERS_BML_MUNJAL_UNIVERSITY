@@ -57,7 +57,7 @@ public class Food extends AppCompatActivity implements ConnectivityRecevier.Conn
         B=findViewById(R.id.butterfly);
         M=findViewById(R.id.monkey);
         T=findViewById(R.id.trails);
-        T.setText(l+" Trails");
+        T.setText(l+" Trials");
         H=findViewById(R.id.h);
         builder = new GuideView.Builder(this)
                 .setTitle("Home")
@@ -70,7 +70,7 @@ public class Food extends AppCompatActivity implements ConnectivityRecevier.Conn
                     public void onDismiss(View view) {
                         switch (view.getId()) {
                             case R.id.h:
-                                builder.setTitle("Trails").setContentText("You have 5 trails totally\nfor 3 upcoming words").setTargetView(v3).build();
+                                builder.setTitle("Trials").setContentText("You have 5 trials totally\nfor 3 upcoming words").setTargetView(v3).build();
                                 break;
                             case R.id.trails:
                                 builder.setTitle("Speaker").setContentText("By clicking this,\nYou can hear pronunciation of upcoming words").setTargetView(v4).build();
@@ -231,7 +231,7 @@ public class Food extends AppCompatActivity implements ConnectivityRecevier.Conn
                     String m1=str1.toLowerCase();
                     count++;
                     l=5-count;
-                    T.setText(l+" Trails");
+                    T.setText(l+" Trials");
                     if (u.equals(m1)) {
                         ccount++;
                         i++;

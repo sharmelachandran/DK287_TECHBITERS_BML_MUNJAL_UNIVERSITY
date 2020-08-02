@@ -185,7 +185,7 @@ public class Cricket extends AppCompatActivity implements ConnectivityRecevier.C
                     String m1=str1.toLowerCase();
                     count++;
                     l=5-count;
-                    T.setText(l+" Trails");
+                    T.setText(l+" Trials");
                     if (u.equals(m1)) {
                         ccount++;
                         i++;
