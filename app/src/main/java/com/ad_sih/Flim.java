@@ -35,7 +35,7 @@ public class Flim extends AppCompatActivity implements ConnectivityRecevier.Conn
     TextView P,B,M;
     int count=0,ccount=0,i=0,l=5;
     int f[]={0,0,0};
-    private String str[]={"Gun","Ticket","Girl"},str1;
+    private String str[]={"Ticket","Girl","Gun"},str1;
     private static final int REQUEST_CODE_SPEECH_INPUT=1000;
     TextToSpeech textToSpeech;
     View v1,v2,v3,v4,v5;

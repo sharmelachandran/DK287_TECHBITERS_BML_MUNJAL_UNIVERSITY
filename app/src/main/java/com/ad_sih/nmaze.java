@@ -1066,7 +1066,7 @@ public class nmaze extends AppCompatActivity implements ConnectivityRecevier.Con
         register.child("AD_Finder").child("Maze").child("Wrong_attempt_Ignored").setValue(adfinder_count);
         register.child("AD_Finder").child("Maze").child("Time_taken").setValue(Time_used_to_solve);
         Intent i=new Intent(getApplicationContext(),home.class);
-        i.putExtra("level",5);
+        i.putExtra("level",4);
         startActivity(i);unregisterReceiver(connectivityRecevier);finish();
     }
     private  void startAnimation(){

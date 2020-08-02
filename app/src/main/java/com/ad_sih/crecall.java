@@ -218,12 +218,11 @@ public class crecall extends AppCompatActivity implements ConnectivityRecevier.C
                 .setTitle("Results")
                 .setMessage(s)
                 .setPositiveBtnText("GOT IT")
-                .setPositiveBtnBackground("#22b573")//pass your gif, png or jpg
                 .isCancellable(false)
                 .OnPositiveClicked(new TTFancyGifDialogListener() {
                     @Override
                     public void OnClick() {
-                        Intent i = new Intent(getApplicationContext(), Score.class);//need to change
+                        Intent i = new Intent(getApplicationContext(),chome.class);//need to change
                         i.putExtra("level",6);
                         startActivity(i);finish();unregisterReceiver(connectivityRecevier);
 

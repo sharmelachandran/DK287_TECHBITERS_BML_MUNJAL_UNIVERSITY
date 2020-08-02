@@ -244,22 +244,21 @@ public class nrecall extends AppCompatActivity implements ConnectivityRecevier.C
         register.child("MINI_COG").child("Word_recall").setValue(ccout);
         int wcout=((3-ccout)*10)/3;
         register.child("ADAS").child("Word_recall").setValue(wcout);
-        /*new TTFancyGifDialog.Builder(nrecall.this)
+        new TTFancyGifDialog.Builder(nrecall.this)
                 .setTitle("Results")
                 .setMessage(s)
                 .setPositiveBtnText("GOT IT")
-                .setPositiveBtnBackground("#22b573")//pass your gif, png or jpg
                 .isCancellable(false)
                 .OnPositiveClicked(new TTFancyGifDialogListener() {
                     @Override
                     public void OnClick() {
-                        Intent i = new Intent(getApplicationContext(), Score.class);
+                        Intent i = new Intent(getApplicationContext(), home.class);
                         i.putExtra("level",6);
                         startActivity(i);unregisterReceiver(connectivityRecevier);finish();
 
                     }
                 })
-                .build();*/
+                .build();
     }
     private void speak(){
         Intent i=new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);

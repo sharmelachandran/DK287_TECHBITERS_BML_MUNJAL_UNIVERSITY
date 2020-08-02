@@ -247,12 +247,11 @@ public class frecall extends AppCompatActivity implements ConnectivityRecevier.C
                 .setTitle("Results")
                 .setMessage(s)
                 .setPositiveBtnText("GOT IT")
-                .setPositiveBtnBackground("#22b573")//pass your gif, png or jpg
                 .isCancellable(false)
                 .OnPositiveClicked(new TTFancyGifDialogListener() {
                     @Override
                     public void OnClick() {
-                        Intent i = new Intent(getApplicationContext(), Score.class);
+                        Intent i = new Intent(getApplicationContext(), fhome.class);
                         i.putExtra("level",6);
                         startActivity(i);unregisterReceiver(connectivityRecevier);finish();
 

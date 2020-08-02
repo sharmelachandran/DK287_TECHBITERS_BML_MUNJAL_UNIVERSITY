@@ -183,7 +183,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
                 if(flag[0]==0)
                 {
                     flag[0]=1;
-                    p0.setBackgroundResource(R.drawable.ms1);
+                    p0.setBackgroundResource(R.drawable.ms);
                 }
             }
         });
@@ -192,7 +192,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
             public void onClick(View v) {
                 if(flag[0]==1) {
                     flag[1] = 1;
-                    p1.setBackgroundResource(R.drawable.ms1);
+                    p1.setBackgroundResource(R.drawable.ms);
                 }
                 else{
                     Toast.makeText(mmaze.this, "Open the Screens  before this!!", Toast.LENGTH_SHORT).show();
@@ -205,7 +205,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
             public void onClick(View v) {
                 if(flag[1]==1) {
                     flag[2] = 1;
-                    p2.setBackgroundResource(R.drawable.ms1);
+                    p2.setBackgroundResource(R.drawable.ms);
                 }
 
                 else{
@@ -219,7 +219,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
                 if(flag[2]==1)
                 {
                     flag[3]=1;
-                    p3.setBackgroundResource(R.drawable.ms1);
+                    p3.setBackgroundResource(R.drawable.ms);
                 }
                 else{
                     Toast.makeText(mmaze.this, "Open the Screens  before this!!", Toast.LENGTH_SHORT).show();
@@ -232,7 +232,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
                 if(flag[3]==1)
                 {
                     flag[4]=1;
-                    p4.setBackgroundResource(R.drawable.ms1);
+                    p4.setBackgroundResource(R.drawable.ms);
                 }
                 else{
                     Toast.makeText(mmaze.this, "Open the Screens  before this!!", Toast.LENGTH_SHORT).show();
@@ -245,7 +245,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
                 if(flag[4]==1)
                 {
                     flag[5]=1;
-                    p5.setBackgroundResource(R.drawable.ms1);
+                    p5.setBackgroundResource(R.drawable.ms);
                 }
                 else{
                     Toast.makeText(mmaze.this, "Open the Screens  before this!!", Toast.LENGTH_SHORT).show();
@@ -258,7 +258,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
                 if(flag[5]==1)
                 {
                     flag[6]=1;
-                    p6.setBackgroundResource(R.drawable.ms1);
+                    p6.setBackgroundResource(R.drawable.ms);
                 }
                 else{
                     Toast.makeText(mmaze.this, "Open the Screens  before this!!", Toast.LENGTH_SHORT).show();
@@ -271,7 +271,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
                 if(flag[6]==1)
                 {
                     flag[7]=1;
-                    p7.setBackgroundResource(R.drawable.ms1);
+                    p7.setBackgroundResource(R.drawable.ms);
                 }
                 else{
                     Toast.makeText(mmaze.this, "Open the Screens  before this!!", Toast.LENGTH_SHORT).show();
@@ -284,7 +284,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
                 if(flag[7]==1)
                 {
                     flag[8]=1;
-                    p8.setBackgroundResource(R.drawable.ms1);
+                    p8.setBackgroundResource(R.drawable.ms);
                 }
                 else{
                     Toast.makeText(mmaze.this, "Open the Screens  before this!!", Toast.LENGTH_SHORT).show();
@@ -297,7 +297,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
                 if(flag[8]==1)
                 {
                     flag[9]=1;
-                    p9.setBackgroundResource(R.drawable.ms1);
+                    p9.setBackgroundResource(R.drawable.ms);
                 }
                 else{
                     Toast.makeText(mmaze.this, "Open the Screens  before this!!", Toast.LENGTH_SHORT).show();
@@ -310,7 +310,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
                 if(flag[9]==1)
                 {
                     flag[10]=1;
-                    p10.setBackgroundResource(R.drawable.ms1);
+                    p10.setBackgroundResource(R.drawable.ms);
                 }
                 else{
                     Toast.makeText(mmaze.this, "Open the Screens  before this!!", Toast.LENGTH_SHORT).show();
@@ -323,7 +323,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
                 if(flag[10]==1)
                 {
                     flag[11]=1;
-                    p11.setBackgroundResource(R.drawable.ms1);
+                    p11.setBackgroundResource(R.drawable.ms);
                 }
                 else{
                     Toast.makeText(mmaze.this, "Open the Screens  before this!!", Toast.LENGTH_SHORT).show();
@@ -336,7 +336,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
                 if(flag[11]==1)
                 {
                     flag[12]=1;
-                    p12.setBackgroundResource(R.drawable.ms1);
+                    p12.setBackgroundResource(R.drawable.ms);
                 }
                 else{
                     Toast.makeText(mmaze.this, "Open the Screens  before this!!", Toast.LENGTH_SHORT).show();
@@ -349,7 +349,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
                 if(flag[12]==1)
                 {
                     flag[13]=1;
-                    p13.setBackgroundResource(R.drawable.ms1);
+                    p13.setBackgroundResource(R.drawable.ms);
                 }
                 else{
                     Toast.makeText(mmaze.this, "Open the Screens  before this!!", Toast.LENGTH_SHORT).show();
@@ -362,7 +362,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
                 if(flag[13]==1)
                 {
                     flag[14]=1;
-                    p14.setBackgroundResource(R.drawable.ms1);
+                    p14.setBackgroundResource(R.drawable.ms);
                 }
                 else{
                     Toast.makeText(mmaze.this, "Open the Screens  before this!!", Toast.LENGTH_SHORT).show();
@@ -375,7 +375,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
                 if(flag[14]==1)
                 {
                     flag[15]=1;
-                    p15.setBackgroundResource(R.drawable.ms1);
+                    p15.setBackgroundResource(R.drawable.ms);
                 }
                 else{
                     Toast.makeText(mmaze.this, "Open the Screens  before this!!", Toast.LENGTH_SHORT).show();
@@ -388,7 +388,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
                 if(flag[15]==1)
                 {
                     flag[16]=1;
-                    p16.setBackgroundResource(R.drawable.ms1);
+                    p16.setBackgroundResource(R.drawable.ms);
                 }
                 else{
                     Toast.makeText(mmaze.this, "Open the Screens  before this!!", Toast.LENGTH_SHORT).show();
@@ -401,7 +401,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
                 if(flag[16]==1)
                 {
                     flag[17]=1;
-                    p17.setBackgroundResource(R.drawable.ms1);
+                    p17.setBackgroundResource(R.drawable.ms);
                 }
                 else{
                     Toast.makeText(mmaze.this, "Open the Screens  before this!!", Toast.LENGTH_SHORT).show();
@@ -414,7 +414,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
                 if(flag[17]==1)
                 {
                     flag[18]=1;
-                    p18.setBackgroundResource(R.drawable.ms1);
+                    p18.setBackgroundResource(R.drawable.ms);
                 }
                 else{
                     Toast.makeText(mmaze.this, "Open the Screens  before this!!", Toast.LENGTH_SHORT).show();
@@ -427,7 +427,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
                 if(flag[18]==1)
                 {
                     flag[19]=1;
-                    p19.setBackgroundResource(R.drawable.ms1);
+                    p19.setBackgroundResource(R.drawable.ms);
                 }
                 else{
                     Toast.makeText(mmaze.this, "Open the Screens  before this!!", Toast.LENGTH_SHORT).show();
@@ -440,7 +440,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
                 if(flag[19]==1)
                 {
                     flag[20]=1;
-                    p20.setBackgroundResource(R.drawable.ms1);
+                    p20.setBackgroundResource(R.drawable.ms);
                 }
                 else{
                     Toast.makeText(mmaze.this, "Open the Screens  before this!!", Toast.LENGTH_SHORT).show();
@@ -453,7 +453,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
                 if(flag[20]==1)
                 {
                     flag[21]=1;
-                    p21.setBackgroundResource(R.drawable.ms1);
+                    p21.setBackgroundResource(R.drawable.ms);
                 }
                 else{
                     Toast.makeText(mmaze.this, "Open the Screens  before this!!", Toast.LENGTH_SHORT).show();
@@ -466,7 +466,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
                 if(flag[21]==1)
                 {
                     flag[22]=1;
-                    p22.setBackgroundResource(R.drawable.ms1);
+                    p22.setBackgroundResource(R.drawable.ms);
                 }
                 else{
                     Toast.makeText(mmaze.this, "Open the Screens  before this!!", Toast.LENGTH_SHORT).show();
@@ -479,7 +479,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
                 if(flag[22]==1)
                 {
                     flag[23]=1;
-                    p23.setBackgroundResource(R.drawable.ms1);
+                    p23.setBackgroundResource(R.drawable.ms);
                 }
                 else{
                     Toast.makeText(mmaze.this, "Open the Screens  before this!!", Toast.LENGTH_SHORT).show();
@@ -492,7 +492,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
                 if(flag[23]==1)
                 {
                     flag[24]=1;
-                    p24.setBackgroundResource(R.drawable.ms1);
+                    p24.setBackgroundResource(R.drawable.ms);
                 }
                 else{
                     Toast.makeText(mmaze.this, "Open the Screens  before this!!", Toast.LENGTH_SHORT).show();
@@ -505,7 +505,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
                 if(flag[24]==1)
                 {
                     flag[25]=1;
-                    p25.setBackgroundResource(R.drawable.ms1);
+                    p25.setBackgroundResource(R.drawable.ms);
                 }
                 else{
                     Toast.makeText(mmaze.this, "Open the Screens  before this!!", Toast.LENGTH_SHORT).show();
@@ -518,7 +518,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
                 if(flag[25]==1)
                 {
                     flag[26]=1;
-                    p26.setBackgroundResource(R.drawable.ms1);
+                    p26.setBackgroundResource(R.drawable.ms);
                 }
                 else{
                     Toast.makeText(mmaze.this, "Open the Screens  before this!!", Toast.LENGTH_SHORT).show();
@@ -531,7 +531,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
                 if(flag[26]==1)
                 {
                     flag[27]=1;
-                    p27.setBackgroundResource(R.drawable.ms1);
+                    p27.setBackgroundResource(R.drawable.ms);
                 }
                 else{
                     Toast.makeText(mmaze.this, "Open the Screens  before this!!", Toast.LENGTH_SHORT).show();
@@ -544,7 +544,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
                 if(flag[27]==1)
                 {
                     flag[28]=1;
-                    p28.setBackgroundResource(R.drawable.ms1);
+                    p28.setBackgroundResource(R.drawable.ms);
                 }
                 else{
                     Toast.makeText(mmaze.this, "Open the Screens  before this!!", Toast.LENGTH_SHORT).show();
@@ -557,8 +557,8 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
                 if(flag[28]==1)
                 {
                     flag[29]=1;
-                    p29.setBackgroundResource(R.drawable.ms1);
-                    c1.setBackgroundResource(R.drawable.clown);
+                    p29.setBackgroundResource(R.drawable.ms);
+                    c1.setBackgroundResource(R.drawable.cj1);
                     c.setBackgroundResource(R.color.grass);
                     tvm.setText("Thankyou soo much!!!\n Click here for next level");
                     startanim();
@@ -582,7 +582,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
                 {
                     wcount++;
                     wflag[1]=1;
-                    w1.setBackgroundResource(R.drawable.ms1);
+                    w1.setBackgroundResource(R.drawable.ms);
                 }
                 else{
                     Toast.makeText(mmaze.this, "Open the Screens  before this!!", Toast.LENGTH_SHORT).show();
@@ -595,7 +595,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
                 if(wflag[1]==1)
                 {
                     wflag[2]=1;
-                    w2.setBackgroundResource(R.drawable.ms1);
+                    w2.setBackgroundResource(R.drawable.ms);
                 }
                 else{
                     Toast.makeText(mmaze.this, "Open the Screens  before this!!", Toast.LENGTH_SHORT).show();
@@ -608,7 +608,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
                 if(wflag[2]==1)
                 {
                     wflag[3]=1;
-                    w3.setBackgroundResource(R.drawable.ms1);
+                    w3.setBackgroundResource(R.drawable.ms);
                 }
                 else{
                     Toast.makeText(mmaze.this, "Open the Screens  before this!!", Toast.LENGTH_SHORT).show();
@@ -621,7 +621,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
                 if(wflag[3]==1)
                 {
                     wflag[4]=1;
-                    w4.setBackgroundResource(R.drawable.ms1);
+                    w4.setBackgroundResource(R.drawable.ms);
                 }
                 else{
                     Toast.makeText(mmaze.this, "Open the Screens  before this!!", Toast.LENGTH_SHORT).show();
@@ -634,7 +634,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
                 if(wflag[4]==1)
                 {
                     wflag[5]=1;
-                    w5.setBackgroundResource(R.drawable.ms1);
+                    w5.setBackgroundResource(R.drawable.ms);
                 }
                 else{
                     Toast.makeText(mmaze.this, "Open the Screens  before this!!", Toast.LENGTH_SHORT).show();
@@ -648,7 +648,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
                 {
 
                     wflag[6]=1;
-                    w6.setBackgroundResource(R.drawable.ms1);
+                    w6.setBackgroundResource(R.drawable.ms);
                 }
                 else{
                     Toast.makeText(mmaze.this, "Open the Screens  before this!!", Toast.LENGTH_SHORT).show();
@@ -662,7 +662,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
                 {
                     wcount++;
                     wflag[7]=1;
-                    w7.setBackgroundResource(R.drawable.ms1);
+                    w7.setBackgroundResource(R.drawable.ms);
                 }
                 else{
                     Toast.makeText(mmaze.this, "Open the Screens  before this!!", Toast.LENGTH_SHORT).show();
@@ -676,7 +676,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
                 {
                     wcount++;
                     wflag[8]=1;
-                    w8.setBackgroundResource(R.drawable.ms1);
+                    w8.setBackgroundResource(R.drawable.ms);
 
                 }
                 else{
@@ -690,7 +690,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
                 if(wflag[8]==1)
                 {
                     wflag[9]=1;
-                    w9.setBackgroundResource(R.drawable.ms1);
+                    w9.setBackgroundResource(R.drawable.ms);
 
                 }
                 else{
@@ -704,7 +704,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
                 if(wflag[9]==1)
                 {
                     wflag[10]=1;
-                    w10.setBackgroundResource(R.drawable.ms1);
+                    w10.setBackgroundResource(R.drawable.ms);
                 }
                 else{
                     Toast.makeText(mmaze.this, "Open the Screens  before this!!", Toast.LENGTH_SHORT).show();
@@ -718,7 +718,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
                 {
                     wcount++;
                     wflag[11]=1;
-                    w11.setBackgroundResource(R.drawable.ms1);
+                    w11.setBackgroundResource(R.drawable.ms);
                 }
                 else{
                     Toast.makeText(mmaze.this, "Open the Screens  before this!!", Toast.LENGTH_SHORT).show();
@@ -731,7 +731,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
                 if(wflag[11]==1)
                 {
                     wflag[12]=1;
-                    w12.setBackgroundResource(R.drawable.ms1);
+                    w12.setBackgroundResource(R.drawable.ms);
                 }
                 else{
                     Toast.makeText(mmaze.this, "Open the Screens  before this!!", Toast.LENGTH_SHORT).show();
@@ -744,7 +744,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
                 if(wflag[12]==1)
                 {
                     wflag[13]=1;
-                    w13.setBackgroundResource(R.drawable.ms1);
+                    w13.setBackgroundResource(R.drawable.ms);
                 }
                 else{
                     Toast.makeText(mmaze.this, "Open the Screens  before this!!", Toast.LENGTH_SHORT).show();
@@ -757,7 +757,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
                 if(wflag[13]==1)
                 {
                     wflag[14]=1;
-                    w14.setBackgroundResource(R.drawable.ms1);
+                    w14.setBackgroundResource(R.drawable.ms);
                 }
                 else{
                     Toast.makeText(mmaze.this, "Open the Screens  before this!!", Toast.LENGTH_SHORT).show();
@@ -771,7 +771,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
                 {
                     wcount++;
                     wflag[15]=1;
-                    w15.setBackgroundResource(R.drawable.ms1);
+                    w15.setBackgroundResource(R.drawable.ms);
                 }
                 else{
                     Toast.makeText(mmaze.this, "Open the Screens  before this!!", Toast.LENGTH_SHORT).show();
@@ -785,7 +785,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
                 {
                     wcount++;
                     wflag[16]=1;
-                    w16.setBackgroundResource(R.drawable.ms1);
+                    w16.setBackgroundResource(R.drawable.ms);
                 }
                 else{
                     Toast.makeText(mmaze.this, "Open the Screens  before this!!", Toast.LENGTH_SHORT).show();
@@ -798,7 +798,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
                 if(wflag[16]==1)
                 {
                     wflag[17]=1;
-                    w17.setBackgroundResource(R.drawable.ms1);
+                    w17.setBackgroundResource(R.drawable.ms);
                 }
                 else{
                     Toast.makeText(mmaze.this, "Open the Screens  before this!!", Toast.LENGTH_SHORT).show();
@@ -811,7 +811,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
                 if(wflag[17]==1)
                 {
                     wflag[18]=1;
-                    w18.setBackgroundResource(R.drawable.ms1);
+                    w18.setBackgroundResource(R.drawable.ms);
                 }
                 else{
                     Toast.makeText(mmaze.this, "Open the Screens  before this!!", Toast.LENGTH_SHORT).show();
@@ -824,7 +824,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
                 if(wflag[16]==1)
                 {
                     wflag[19]=1;
-                    w19.setBackgroundResource(R.drawable.ms1);
+                    w19.setBackgroundResource(R.drawable.ms);
                 }
                 else{
                     Toast.makeText(mmaze.this, "Open the Screens  before this!!", Toast.LENGTH_SHORT).show();
@@ -837,7 +837,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
                 if(wflag[19]==1)
                 {
                     wflag[20]=1;
-                    w20.setBackgroundResource(R.drawable.ms1);
+                    w20.setBackgroundResource(R.drawable.ms);
                 }
                 else{
                     Toast.makeText(mmaze.this, "Open the Screens  before this!!", Toast.LENGTH_SHORT).show();
@@ -851,7 +851,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
                 {
                     wcount++;
                     wflag[21]=1;
-                    w21.setBackgroundResource(R.drawable.ms1);
+                    w21.setBackgroundResource(R.drawable.ms);
                 }
                 else{
                     Toast.makeText(mmaze.this, "Open the Screens  before this!!", Toast.LENGTH_SHORT).show();
@@ -864,7 +864,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
                 if(wflag[21]==1)
                 {
                     wflag[22]=1;
-                    w22.setBackgroundResource(R.drawable.ms1);
+                    w22.setBackgroundResource(R.drawable.ms);
                 }
                 else{
                     Toast.makeText(mmaze.this, "Open the Screens  before this!!", Toast.LENGTH_SHORT).show();
@@ -877,7 +877,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
                 if(wflag[22]==1)
                 {
                     wflag[23]=1;
-                    w23.setBackgroundResource(R.drawable.ms1);
+                    w23.setBackgroundResource(R.drawable.ms);
                 }
                 else{
                     Toast.makeText(mmaze.this, "Open the Screens  before this!!", Toast.LENGTH_SHORT).show();
@@ -890,7 +890,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
                 if(wflag[21]==1)
                 {
                     wflag[24]=1;
-                    w24.setBackgroundResource(R.drawable.ms1);
+                    w24.setBackgroundResource(R.drawable.ms);
                 }
                 else{
                     Toast.makeText(mmaze.this, "Open the Screens  before this!!", Toast.LENGTH_SHORT).show();
@@ -903,7 +903,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
                 if(wflag[24]==1)
                 {
                     wflag[25]=1;
-                    w25.setBackgroundResource(R.drawable.ms1);
+                    w25.setBackgroundResource(R.drawable.ms);
                 }
                 else{
                     Toast.makeText(mmaze.this, "Open the Screens  before this!!", Toast.LENGTH_SHORT).show();
@@ -916,7 +916,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
                 if(wflag[25]==1)
                 {
                     wflag[26]=1;
-                    w26.setBackgroundResource(R.drawable.ms1);
+                    w26.setBackgroundResource(R.drawable.ms);
                 }
                 else{
                     Toast.makeText(mmaze.this, "Open the Screens  before this!!", Toast.LENGTH_SHORT).show();
@@ -929,7 +929,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
                 if(wflag[24]==1)
                 {
                     wflag[27]=1;
-                    w27.setBackgroundResource(R.drawable.ms1);
+                    w27.setBackgroundResource(R.drawable.ms);
                 }
                 else{
                     Toast.makeText(mmaze.this, "Open the Screens  before this!!", Toast.LENGTH_SHORT).show();
@@ -942,7 +942,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
                 if(wflag[27]==1)
                 {
                     wflag[28]=1;
-                    w28.setBackgroundResource(R.drawable.ms1);
+                    w28.setBackgroundResource(R.drawable.ms);
                 }
                 else{
                     Toast.makeText(mmaze.this, "Open the Screens  before this!!", Toast.LENGTH_SHORT).show();
@@ -955,7 +955,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
                 if(wflag[28]==1)
                 {
                     wflag[29]=1;
-                    w29.setBackgroundResource(R.drawable.ms1);
+                    w29.setBackgroundResource(R.drawable.ms);
                 }
                 else{
                     Toast.makeText(mmaze.this, "Open the Screens  before this!!", Toast.LENGTH_SHORT).show();
@@ -968,7 +968,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
                 if(wflag[29]==1)
                 {
                     wflag[30]=1;
-                    w30.setBackgroundResource(R.drawable.ms1);
+                    w30.setBackgroundResource(R.drawable.ms);
                 }
                 else{
                     Toast.makeText(mmaze.this, "Open the Screens  before this!!", Toast.LENGTH_SHORT).show();
@@ -1043,7 +1043,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
         register.child("AD_Finder").child("Maze").child("Wrong_attempt_Ignored").setValue(adfinder_count);
         register.child("AD_Finder").child("Maze").child("Time_taken").setValue(Time_used_to_solve);
         Intent i=new Intent(getApplicationContext(),mhome.class);
-        i.putExtra("level",5);
+        i.putExtra("level",4);
         startActivity(i);unregisterReceiver(connectivityRecevier);finish();
     }
     private  void startAnimation(){

@@ -26,7 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class fhome extends AppCompatActivity implements ConnectivityRecevier.ConnectivityRecevierListener {
     int level,f1=0,f2=0,f3=0,f4=0,f5=0,f6=0,f7=0,f8=0,f9=0;
-    Button b1,b2,b3,b4,b5,b6,b7,b8,b9,back,settings;
+    Button b1,b2,b3,b4,b5,b6,b7,b8,b9,back;
     Handler h=new Handler();
     Context context;
     MediaPlayer ring;
@@ -50,7 +50,6 @@ public class fhome extends AppCompatActivity implements ConnectivityRecevier.Con
         b8=findViewById(R.id.l8);
         b9=findViewById(R.id.l9);
         back=findViewById(R.id.theme);
-        settings=findViewById(R.id.set);
         storedata();
         //imagesetting
         if(level==1)
@@ -113,8 +112,8 @@ public class fhome extends AppCompatActivity implements ConnectivityRecevier.Con
             ring.start();
             b1.setBackgroundResource(R.drawable.f1);f1=2;
             b2.setBackgroundResource(R.drawable.f2);f2=2;
-           // b3.setBackgroundResource(R.drawable.f3);f3=2;
-            //b4.setBackgroundResource(R.drawable.f4);f4=2;
+            b3.setBackgroundResource(R.drawable.f3);f3=2;
+            b4.setBackgroundResource(R.drawable.f4);f4=2;
             Runnable r1=new Runnable() {
                 @Override
                 public void run() {
@@ -252,7 +251,7 @@ public class fhome extends AppCompatActivity implements ConnectivityRecevier.Con
                     Toast.makeText(getApplicationContext(),"Level locked",Toast.LENGTH_SHORT).show();
                 }
             }
-        });
+        });*/
         b4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -266,7 +265,7 @@ public class fhome extends AppCompatActivity implements ConnectivityRecevier.Con
                     Toast.makeText(getApplicationContext(),"Level locked",Toast.LENGTH_SHORT).show();
                 }
             }
-        });*/
+        });
         b5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -280,7 +279,7 @@ public class fhome extends AppCompatActivity implements ConnectivityRecevier.Con
                     Toast.makeText(getApplicationContext(),"Level locked",Toast.LENGTH_SHORT).show();
                 }
             }
-        });/*
+        });
         b6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -294,7 +293,7 @@ public class fhome extends AppCompatActivity implements ConnectivityRecevier.Con
                     Toast.makeText(getApplicationContext(),"Level locked",Toast.LENGTH_SHORT).show();
                 }
             }
-        });
+        });/*
         b7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

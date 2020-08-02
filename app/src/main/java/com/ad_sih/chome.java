@@ -51,7 +51,6 @@ public class chome extends AppCompatActivity implements ConnectivityRecevier.Con
         b8=findViewById(R.id.l8);
         b9=findViewById(R.id.l9);
         back=findViewById(R.id.theme);
-        settings=findViewById(R.id.set);
         storedata();
         //imagesetting
         if(level==1)
@@ -113,8 +112,8 @@ public class chome extends AppCompatActivity implements ConnectivityRecevier.Con
             ring.start();
             b1.setBackgroundResource(R.drawable.s1);f1=2;
             b2.setBackgroundResource(R.drawable.s2);f2=2;
-            //b3.setBackgroundResource(R.drawable.s3);f3=2;
-            //b4.setBackgroundResource(R.drawable.s4);f4=2;
+            b3.setBackgroundResource(R.drawable.s3);f3=2;
+            b4.setBackgroundResource(R.drawable.s4);f4=2;
             Runnable r1=new Runnable() {
                 @Override
                 public void run() {
@@ -255,7 +254,7 @@ public class chome extends AppCompatActivity implements ConnectivityRecevier.Con
                     Toast.makeText(getApplicationContext(),"Level locked",Toast.LENGTH_SHORT).show();
                 }
             }
-        });
+        });*/
         b4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -269,7 +268,7 @@ public class chome extends AppCompatActivity implements ConnectivityRecevier.Con
                     Toast.makeText(getApplicationContext(),"Level locked",Toast.LENGTH_SHORT).show();
                 }
             }
-        });*/
+        });
         b5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -283,7 +282,7 @@ public class chome extends AppCompatActivity implements ConnectivityRecevier.Con
                     Toast.makeText(getApplicationContext(),"Level locked",Toast.LENGTH_SHORT).show();
                 }
             }
-        });/*
+        });
         b6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -297,7 +296,7 @@ public class chome extends AppCompatActivity implements ConnectivityRecevier.Con
                     Toast.makeText(getApplicationContext(),"Level locked",Toast.LENGTH_SHORT).show();
                 }
             }
-        });
+        });/*
         b7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -52,7 +52,6 @@ public class mhome extends AppCompatActivity implements ConnectivityRecevier.Con
         b8=findViewById(R.id.l8);
         b9=findViewById(R.id.l9);
         back=findViewById(R.id.theme);
-        settings=findViewById(R.id.set);
         storedata();
         //imagesetting
         if(level==1)
@@ -81,7 +80,7 @@ public class mhome extends AppCompatActivity implements ConnectivityRecevier.Con
             };
             h.postDelayed(r1,1000);
         }
-        /*else if(level==3){
+        else if(level==3){
             ring.start();
             b1.setBackgroundResource(R.drawable.m1);f1=2;
             b2.setBackgroundResource(R.drawable.m2);f2=2;
@@ -109,13 +108,13 @@ public class mhome extends AppCompatActivity implements ConnectivityRecevier.Con
                 }
             };
             h.postDelayed(r1,1000);
-        }*/
+        }
         else if(level==5){
             ring.start();
             b1.setBackgroundResource(R.drawable.m1);f1=2;
             b2.setBackgroundResource(R.drawable.m2);f2=2;
-            //b3.setBackgroundResource(R.drawable.m3);f3=2;
-            //b4.setBackgroundResource(R.drawable.m4);f4=2;
+            b3.setBackgroundResource(R.drawable.m3);f3=2;
+            b4.setBackgroundResource(R.drawable.m4);f4=2;
             Runnable r1=new Runnable() {
                 @Override
                 public void run() {
@@ -126,7 +125,7 @@ public class mhome extends AppCompatActivity implements ConnectivityRecevier.Con
             };
             h.postDelayed(r1,1000);
         }
-        /*else if(level==6){
+        else if(level==6){
             ring.start();
             b1.setBackgroundResource(R.drawable.m1);f1=2;
             b2.setBackgroundResource(R.drawable.m2);f2=2;
@@ -200,7 +199,7 @@ public class mhome extends AppCompatActivity implements ConnectivityRecevier.Con
                 }
             };
             h.postDelayed(r1,1000);
-        }*/
+        }
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -251,7 +250,7 @@ public class mhome extends AppCompatActivity implements ConnectivityRecevier.Con
                     Toast.makeText(getApplicationContext(),"Level locked",Toast.LENGTH_SHORT).show();
                 }
             }
-        });
+        });*/
         b4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -265,7 +264,7 @@ public class mhome extends AppCompatActivity implements ConnectivityRecevier.Con
                     Toast.makeText(getApplicationContext(),"Level locked",Toast.LENGTH_SHORT).show();
                 }
             }
-        });*/
+        });
         b5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -279,7 +278,7 @@ public class mhome extends AppCompatActivity implements ConnectivityRecevier.Con
                     Toast.makeText(getApplicationContext(),"Level locked",Toast.LENGTH_SHORT).show();
                 }
             }
-        });/*
+        });
         b6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -293,7 +292,7 @@ public class mhome extends AppCompatActivity implements ConnectivityRecevier.Con
                     Toast.makeText(getApplicationContext(),"Level locked",Toast.LENGTH_SHORT).show();
                 }
             }
-        });
+        });/*
         b7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
