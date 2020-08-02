@@ -24,7 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.Locale;
 
 public class coject extends AppCompatActivity implements ConnectivityRecevier.ConnectivityRecevierListener {
-    TextView fball,dog,bat,w1,w2,w3,w4;//wrong w1 w2 w3
+    TextView fball,stump,bat,w2,w3,w4;//wrong w1 w2 w3
     TextView t1,t2;
     //ProgressBar progressBar;
     int ccount=0,wcount=0;
@@ -42,9 +42,8 @@ public class coject extends AppCompatActivity implements ConnectivityRecevier.Co
         setContentView(R.layout.activity_coject);
         checkInternetConnection();
         fball=findViewById(R.id.textView6);
-        dog=findViewById(R.id.textView7);
+        stump=findViewById(R.id.textView7);
         bat=findViewById(R.id.textView8);
-        w1=findViewById(R.id.textView10);
         w2=findViewById(R.id.textView12);
         w3=findViewById(R.id.textView9);
         w4=findViewById(R.id.textView13);
@@ -79,7 +78,7 @@ public class coject extends AppCompatActivity implements ConnectivityRecevier.Co
 
             }
         });
-        dog.setOnClickListener(new View.OnClickListener() {
+        stump.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(f2==0&&f5!=1)
@@ -88,7 +87,7 @@ public class coject extends AppCompatActivity implements ConnectivityRecevier.Co
                     ccount++;
                     count++;
                     String s=t2.getText().toString();
-                    t2.setText(s+count+")Dog\n");
+                    t2.setText(s+count+")Stump\n");
                     if(count==5||ccount==3){
                         gonext();
                     }
@@ -109,12 +108,6 @@ public class coject extends AppCompatActivity implements ConnectivityRecevier.Co
                         gonext();
                     }
                 }
-            }
-        });
-        w1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                wrong();
             }
         });
         w2.setOnClickListener(new View.OnClickListener() {
