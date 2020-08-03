@@ -1,6 +1,21 @@
 # DK287_TECHBITERS
 Mobile game for Alzheimer's Disease Detection 
 
+* **Download the following file from the given link and place it in the models folder inside Interlocking_Diagram folder**
+      https://drive.google.com/drive/folders/1B32lUFUfOuil3oeqvpdYzROL_ddYIbOe?usp=sharing
+      
+* Create an AWS EC2 instance for clok Drawing (Source: Clock Drawing Folder)
+   Goto app/src/main/java/com/ad_sih/clockdrawing.java file 
+   Within the function "screenshot" enter your API End point in the ***line 271*** provided where "YOUR_API_END_POINT" for String postUrl
+   ![clock-readme](https://user-images.githubusercontent.com/47329924/89140580-ad0ad880-d55f-11ea-9944-bf02042e2f19.PNG)
+
+   
+* Create an AWS EC2 instance for Interlocking Diagram (Source: Interlocking_Diagram Folder)
+  Goto app/src/main/java/com/ad_sih/diagram.java file
+  Within the function "screenshot" enter your API End point in the ***line 273*** provided where "YOUR_API_END_POINT" for String postUrl
+  ![interlocking-readme](https://user-images.githubusercontent.com/47329924/89140654-d75c9600-d55f-11ea-91db-f7fbd22af971.PNG)
+
+  
 Building
 ========
 To build you will need:
