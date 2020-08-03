@@ -2,6 +2,7 @@ package com.ad_sih;
 
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
@@ -43,12 +44,15 @@ public class Flim extends AppCompatActivity implements ConnectivityRecevier.Conn
     private GuideView mGuideView;
     private GuideView.Builder builder;
     ConnectivityRecevier connectivityRecevier=new ConnectivityRecevier();
+    MediaPlayer m;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_flim);
+        m= MediaPlayer.create(getApplicationContext(),R.raw.m2);
+        m.start();
         checkInternetConnection();
         v1=findViewById(R.id.h);
         v3=findViewById(R.id.trails);
@@ -99,6 +103,7 @@ public class Flim extends AppCompatActivity implements ConnectivityRecevier.Conn
         H.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                m.stop();
                 Intent i=new Intent(getApplicationContext(),mhome.class);
                 i.putExtra("level",1);
                 startActivity(i);unregisterReceiver(connectivityRecevier);finish();
@@ -239,7 +244,7 @@ public class Flim extends AppCompatActivity implements ConnectivityRecevier.Conn
         DatabaseReference register = firebaseDatabase.getReference().child(FirebaseAuth.getInstance().getUid()).child("Entertainment");
         register.child("MMSE").child("Word_registration").setValue(ccount);
         register.child("AD_Finder").child("Word_registration").setValue(ccount);
-        Intent i = new Intent(getApplicationContext(), mhome.class);
+        Intent i = new Intent(getApplicationContext(), mhome.class);m.stop();
         i.putExtra("level",2);
         startActivity(i);unregisterReceiver(connectivityRecevier);finish();
     }

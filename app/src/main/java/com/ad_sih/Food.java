@@ -2,6 +2,7 @@ package com.ad_sih;
 
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
@@ -41,11 +42,14 @@ public class Food extends AppCompatActivity implements ConnectivityRecevier.Conn
     private GuideView mGuideView;
     private GuideView.Builder builder;
     ConnectivityRecevier connectivityRecevier=new ConnectivityRecevier();
+    MediaPlayer m;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_food);
+        m= MediaPlayer.create(getApplicationContext(),R.raw.m2);
+        m.start();
         checkInternetConnection();
         v1=findViewById(R.id.h);
         v3=findViewById(R.id.trails);
@@ -94,7 +98,7 @@ public class Food extends AppCompatActivity implements ConnectivityRecevier.Conn
         updatingForDynamicLocationViews();
         H.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) {m.stop();
                 Intent i=new Intent(getApplicationContext(),fhome.class);
                 i.putExtra("level",1);
                 startActivity(i);unregisterReceiver(connectivityRecevier);finish();
@@ -289,7 +293,7 @@ public class Food extends AppCompatActivity implements ConnectivityRecevier.Conn
         register.child("MMSE").child("Word_registration").setValue(ccount);
         register.child("AD_Finder").child("Word_registration").setValue(ccount);
         Intent i = new Intent(getApplicationContext(), fhome.class);
-        i.putExtra("level",2);
+        i.putExtra("level",2);m.stop();
         startActivity(i);unregisterReceiver(connectivityRecevier);finish();
 
     }

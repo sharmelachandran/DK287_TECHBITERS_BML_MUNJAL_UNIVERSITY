@@ -10,6 +10,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -62,14 +63,17 @@ public class clockdrawing extends AppCompatActivity implements ConnectivityRecev
     private static final int PICK_FILE=1023;
     private  String theme,store;
     private DatabaseReference ref;
-    int clock_score;
+    int clock_score=0;
     MyCanvas myCanvas;
+    MediaPlayer m;
     ConnectivityRecevier connectivityRecevier=new ConnectivityRecevier();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_clockdrawing);
+        m= MediaPlayer.create(getApplicationContext(),R.raw.m2);
+        m.start();
         checkInternetConnection();
         theme=getIntent().getStringExtra("theme");
         if(theme.equals("nature"))
@@ -140,7 +144,7 @@ public class clockdrawing extends AppCompatActivity implements ConnectivityRecev
             @Override
             public void onClick(View v) {
                 Intent i=new Intent(getApplicationContext(),clockdrawing.class);
-                i.putExtra("theme",theme);
+                i.putExtra("theme",theme);m.stop();
                 startActivity(i);unregisterReceiver(connectivityRecevier);finish();
             }
         });
@@ -163,7 +167,7 @@ public class clockdrawing extends AppCompatActivity implements ConnectivityRecev
     private void changeActivity(){
         Intent i=new Intent(this,OfflineActivity.class);
         this.onPause();
-        i.putExtra("activity","clockdrawing");
+        i.putExtra("activity","clockdrawing");m.stop();
         startActivity(i);unregisterReceiver(connectivityRecevier);
     }
     @Override
@@ -268,7 +272,7 @@ public class clockdrawing extends AppCompatActivity implements ConnectivityRecev
         root.setDrawingCacheEnabled(true);
         File file=new File(filename);
         file.getParentFile().mkdir();
-        String postUrl = "http://ec2-54-67-30-22.us-west-1.compute.amazonaws.com/predict";//aws instance url
+        String postUrl = "http://ec2-3-101-34-58.us-west-1.compute.amazonaws.com/predict";//aws instance url for clockdrawing
         try{
             FileOutputStream fileOutputStream=new FileOutputStream(file);
             bitmap.compress(Bitmap.CompressFormat.JPEG,100,fileOutputStream);
@@ -344,9 +348,7 @@ public class clockdrawing extends AppCompatActivity implements ConnectivityRecev
                         public void onError(ANError error) {
                             // handle error
                             //Toast.makeText(getApplicationContext(),"Error in upload method",Toast.LENGTH_SHORT).show();
-
                         }
-
                     });
 
 
@@ -384,6 +386,7 @@ public class clockdrawing extends AppCompatActivity implements ConnectivityRecev
         DatabaseReference register = firebaseDatabase.getReference().child(FirebaseAuth.getInstance().getUid()).child(store);
         register.child("AD_Finder").child("Clock").setValue(clock_score);
         register.child("MINI_COG").child("Clock").setValue(clock_score);
+        m.stop();
         if(theme.equals("nature")) {
             Intent i = new Intent(getApplicationContext(), home.class);
             i.putExtra("level", 4);
@@ -403,6 +406,7 @@ public class clockdrawing extends AppCompatActivity implements ConnectivityRecev
             i.putExtra("level", 4);
             startActivity(i);finish();
         }
+
 
     }
     @Override

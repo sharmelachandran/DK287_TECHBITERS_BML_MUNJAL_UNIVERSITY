@@ -2,6 +2,7 @@ package com.ad_sih;
 
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -40,13 +41,16 @@ public class numbercross extends AppCompatActivity implements ConnectivityRecevi
     View V1;
     private GuideView mGuideView;
     private GuideView.Builder builder;
+    MediaPlayer m;
     ConnectivityRecevier connectivityRecevier=new ConnectivityRecevier();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_numbercross);
-        checkInternetConnection();
+        checkInternetConnection(); m= MediaPlayer.create(getApplicationContext(),R.raw.m2);
+        m.start();
+
         Arrays.fill(a,0);
         Arrays.fill(flag,0);
         b1=findViewById(R.id.button2);
@@ -120,7 +124,7 @@ public class numbercross extends AppCompatActivity implements ConnectivityRecevi
         mGuideView.show();
         H.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) {m.stop();
                 countDownTimer.cancel();
                 Intent i=new Intent(getApplicationContext(),home.class);
                 i.putExtra("level",7);
@@ -804,7 +808,7 @@ public class numbercross extends AppCompatActivity implements ConnectivityRecevi
             else if (ccount < 14 && wcount != 0)
                 Toast.makeText(getApplicationContext(), "BETTER LUCK NEXT TIME :(", Toast.LENGTH_LONG).show();
             Intent i = new Intent(getApplicationContext(), home.class);
-            i.putExtra("level", 8);
+            i.putExtra("level", 8);m.stop();
             startActivity(i);unregisterReceiver(connectivityRecevier);finish();
     }
     private void startTimer(){

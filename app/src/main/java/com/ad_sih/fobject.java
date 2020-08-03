@@ -2,6 +2,7 @@ package com.ad_sih;
 
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -35,11 +36,14 @@ public class fobject extends AppCompatActivity implements ConnectivityRecevier.C
     private CountDownTimer countDownTimer;
     private long timeleftmilli=START_TIME;
     ConnectivityRecevier connectivityRecevier=new ConnectivityRecevier();
+    MediaPlayer m;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_fobject);
+        m= MediaPlayer.create(getApplicationContext(),R.raw.m2);
+        m.start();
         checkInternetConnection();
         bana=findViewById(R.id.textView11);
         car=findViewById(R.id.textView12);
@@ -55,6 +59,7 @@ public class fobject extends AppCompatActivity implements ConnectivityRecevier.C
         H.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                m.stop();
                 Intent i=new Intent(getApplicationContext(),fhome.class);
                 i.putExtra("level",9);
                 startActivity(i);unregisterReceiver(connectivityRecevier);finish();
@@ -219,7 +224,7 @@ public class fobject extends AppCompatActivity implements ConnectivityRecevier.C
         else if (ccount < 3 && wcount != 0)
             Toast.makeText(getApplicationContext(), "BETTER LUCK NEXT TIME :(", Toast.LENGTH_LONG).show();
         Intent i=new Intent(getApplicationContext(),  Score.class);
-        i.putExtra("theme",2);
+        i.putExtra("theme",2);m.stop();
         i.putExtra("total","Food");
         startActivity(i);unregisterReceiver(connectivityRecevier);finish();
     }

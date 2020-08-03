@@ -2,6 +2,7 @@ package com.ad_sih;
 
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -37,6 +38,7 @@ public class nobject extends AppCompatActivity implements ConnectivityRecevier.C
     Button H,tim;
     private static final long START_TIME=60000;//in milliseconds 60000/60=1mins
     private CountDownTimer countDownTimer;
+    MediaPlayer m;
     ConnectivityRecevier connectivityRecevier=new ConnectivityRecevier();
     private long timeleftmilli=START_TIME;
     @Override
@@ -45,6 +47,8 @@ public class nobject extends AppCompatActivity implements ConnectivityRecevier.C
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_nobject);
         checkInternetConnection();
+        m= MediaPlayer.create(getApplicationContext(),R.raw.m2);
+        m.start();
         ins=findViewById(R.id.textView2);
         par=findViewById(R.id.textView6);
         but=findViewById(R.id.textView7);
@@ -76,7 +80,7 @@ public class nobject extends AppCompatActivity implements ConnectivityRecevier.C
         },7000);
         H.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) {m.stop();
                 countDownTimer.cancel();
                 Intent i=new Intent(getApplicationContext(),home.class);
                 i.putExtra("level",9);
@@ -200,7 +204,7 @@ public class nobject extends AppCompatActivity implements ConnectivityRecevier.C
         count++;
         String s=t2.getText().toString();
         t2.setText(s+"\n"+count+")Wrong");
-        if(count==5||ccount==3)
+        if(count==4||ccount==3)
         {
             gonext();
         }
@@ -214,7 +218,7 @@ public class nobject extends AppCompatActivity implements ConnectivityRecevier.C
     private void storedata(){
             int seconds = (int) (timeleftmilli / 1000) % 60;
             int Time_used_to_solve = 60 - seconds;
-            countDownTimer.cancel();
+            //countDownTimer.cancel();
             final Long[] s = new Long[4];
             FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
             final DatabaseReference register = firebaseDatabase.getReference().child(FirebaseAuth.getInstance().getUid()).child("Nature");
@@ -254,7 +258,7 @@ public class nobject extends AppCompatActivity implements ConnectivityRecevier.C
             else if (ccount < 3 && wcount != 0)
                 Toast.makeText(getApplicationContext(), "BETTER LUCK NEXT TIME :(", Toast.LENGTH_LONG).show();
             Intent i=new Intent(getApplicationContext(),  Score.class);
-            i.putExtra("theme",1);
+            i.putExtra("theme",1);m.stop();
             i.putExtra("total","Nature");
             startActivity(i);unregisterReceiver(connectivityRecevier);finish();
     }

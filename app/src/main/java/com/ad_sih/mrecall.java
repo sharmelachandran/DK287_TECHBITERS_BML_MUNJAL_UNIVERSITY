@@ -2,6 +2,7 @@ package com.ad_sih;
 
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Handler;
@@ -42,6 +43,7 @@ public class mrecall extends AppCompatActivity implements ConnectivityRecevier.C
     private GuideView mGuideView;
     private GuideView.Builder builder;
     ConnectivityRecevier connectivityRecevier=new ConnectivityRecevier();
+    MediaPlayer m;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +51,8 @@ public class mrecall extends AppCompatActivity implements ConnectivityRecevier.C
 
         setContentView(R.layout.activity_mrecall);
         checkInternetConnection();
+        m= MediaPlayer.create(getApplicationContext(),R.raw.m2);
+        m.start();
         v1=findViewById(R.id.textView3);
         v2=findViewById(R.id.speech);
         W1=findViewById(R.id.w1);
@@ -85,7 +89,7 @@ public class mrecall extends AppCompatActivity implements ConnectivityRecevier.C
 
         H.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) {m.stop();
                 Intent i=new Intent(getApplicationContext(),mhome.class);
                 i.putExtra("level",5);
                 startActivity(i);unregisterReceiver(connectivityRecevier);finish();
@@ -253,7 +257,7 @@ public class mrecall extends AppCompatActivity implements ConnectivityRecevier.C
                 .isCancellable(false)
                 .OnPositiveClicked(new TTFancyGifDialogListener() {
                     @Override
-                    public void OnClick() {
+                    public void OnClick() {m.stop();
                         Intent i = new Intent(getApplicationContext(), mhome.class);
                         i.putExtra("level",6);
                         startActivity(i);unregisterReceiver(connectivityRecevier);finish();

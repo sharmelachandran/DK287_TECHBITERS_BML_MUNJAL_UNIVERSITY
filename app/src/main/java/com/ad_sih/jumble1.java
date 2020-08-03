@@ -3,6 +3,7 @@ package com.ad_sih;
 import android.content.ClipData;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -32,6 +33,7 @@ public class jumble1 extends AppCompatActivity implements ConnectivityRecevier.C
     private static final long START_TIME=60000;//in milliseconds 60000/60=1mins
     private CountDownTimer countDownTimer;
     private long timeleftmilli=START_TIME;
+    MediaPlayer m;
     int c=0;
     int i = 0;
     int ccount=0;
@@ -48,6 +50,8 @@ public class jumble1 extends AppCompatActivity implements ConnectivityRecevier.C
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_jumble1);
+        m= MediaPlayer.create(getApplicationContext(),R.raw.m2);
+        m.start();
         checkInternetConnection();
         v1=findViewById(R.id.s1);
         v2=findViewById(R.id.c1);
@@ -103,7 +107,7 @@ public class jumble1 extends AppCompatActivity implements ConnectivityRecevier.C
         H.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                countDownTimer.cancel();
+                countDownTimer.cancel();m.stop();
                 Intent i=new Intent(getApplicationContext(),fhome.class);
                 i.putExtra("level",4);
                 startActivity(i);unregisterReceiver(connectivityRecevier);
@@ -512,7 +516,7 @@ public class jumble1 extends AppCompatActivity implements ConnectivityRecevier.C
             if (ccount == 5)
                 Toast.makeText(getApplicationContext(), "Correct Answer!!!", Toast.LENGTH_LONG).show();
             Intent i = new Intent(getApplicationContext(), fhome.class);
-            i.putExtra("level",5);
+            i.putExtra("level",5);m.stop();
             startActivity(i);unregisterReceiver(connectivityRecevier);
             finish();
         }

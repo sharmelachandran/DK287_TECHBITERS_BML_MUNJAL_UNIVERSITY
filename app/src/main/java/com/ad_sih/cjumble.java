@@ -3,6 +3,7 @@ package com.ad_sih;
 import android.content.ClipData;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -43,12 +44,15 @@ public class cjumble extends AppCompatActivity implements ConnectivityRecevier.C
     View v1,v2,v3,v4;
     private GuideView mGuideView;
     private GuideView.Builder builder;
+    MediaPlayer m;
     ConnectivityRecevier connectivityRecevier=new ConnectivityRecevier();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_cjumble);
+        m= MediaPlayer.create(getApplicationContext(),R.raw.m2);
+        m.start();
         checkInternetConnection();
         v1=findViewById(R.id.s1);
         v2=findViewById(R.id.c1);
@@ -462,7 +466,7 @@ public class cjumble extends AppCompatActivity implements ConnectivityRecevier.C
     }
     private void changeActivity(){
         Intent i=new Intent(this,OfflineActivity.class);
-        this.onPause();
+        this.onPause();m.stop();
         i.putExtra("activity","cjumble");
         startActivity(i);
     }
@@ -514,7 +518,7 @@ public class cjumble extends AppCompatActivity implements ConnectivityRecevier.C
             if (ccount == 5)
                 Toast.makeText(getApplicationContext(), "Correct Answer!!!", Toast.LENGTH_LONG).show();
             Intent i = new Intent(getApplicationContext(), chome.class);
-            i.putExtra("level",5);
+            i.putExtra("level",5);m.stop();
             startActivity(i);unregisterReceiver(connectivityRecevier);finish();
         }
         else

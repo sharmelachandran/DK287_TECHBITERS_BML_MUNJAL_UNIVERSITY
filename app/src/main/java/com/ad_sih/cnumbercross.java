@@ -2,6 +2,7 @@ package com.ad_sih;
 
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -40,6 +41,7 @@ public class cnumbercross extends AppCompatActivity implements ConnectivityRecev
     View V1;
     private GuideView mGuideView;
     private GuideView.Builder builder;
+    MediaPlayer m;
     ConnectivityRecevier connectivityRecevier=new ConnectivityRecevier();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +49,8 @@ public class cnumbercross extends AppCompatActivity implements ConnectivityRecev
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_cnumbercross);
         checkInternetConnection();
+        m= MediaPlayer.create(getApplicationContext(),R.raw.m2);
+        m.start();
         //prog();
         Arrays.fill(a,0);
         Arrays.fill(flag,0);
@@ -123,7 +127,7 @@ public class cnumbercross extends AppCompatActivity implements ConnectivityRecev
             @Override
             public void onClick(View v) {
                 Intent i=new Intent(getApplicationContext(),chome.class);
-                i.putExtra("level",7);
+                i.putExtra("level",7);m.stop();
                 startActivity(i);unregisterReceiver(connectivityRecevier);finish();
             }
         });
@@ -789,7 +793,7 @@ public class cnumbercross extends AppCompatActivity implements ConnectivityRecev
             else if (ccount < 14 && wcount != 0)
                 Toast.makeText(getApplicationContext(), "BETTER LUCK NEXT TIME :(", Toast.LENGTH_LONG).show();
             Intent i = new Intent(getApplicationContext(), chome.class);
-            i.putExtra("level", 8);
+            i.putExtra("level", 8);m.stop();
             startActivity(i);unregisterReceiver(connectivityRecevier);finish();
         }
     private void startTimer(){

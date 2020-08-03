@@ -4,10 +4,12 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -19,24 +21,29 @@ import com.google.firebase.auth.FirebaseAuth;
 public class theme extends AppCompatActivity implements FirebaseAuth.AuthStateListener,ConnectivityRecevier.ConnectivityRecevierListener {
     ImageView N,C,F,E;
     int theme;
+
     private static final String TAG = "theme";
     ConnectivityRecevier connectivityRecevier=new ConnectivityRecevier();
     Boolean pause=false;
+    MediaPlayer m;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_theme);
+        m= MediaPlayer.create(getApplicationContext(),R.raw.m2);
+        m.start();
         N=findViewById(R.id.nat);
         C=findViewById(R.id.cric);
         F=findViewById(R.id.food);
         E=findViewById(R.id.enter);
         theme=getIntent().getIntExtra("theme",0);
         checkInternetConnection();
+
         N.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(theme!=1) {
+                if(theme!=1) {m.stop();
                     Intent i = new Intent(getApplicationContext(), home.class);
                     i.putExtra("level", 1);
                     startActivity(i);unregisterReceiver(connectivityRecevier);finish();
@@ -48,7 +55,7 @@ public class theme extends AppCompatActivity implements FirebaseAuth.AuthStateLi
         F.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(theme!=2) {
+                if(theme!=2) {m.stop();
                     Intent i = new Intent(getApplicationContext(), fhome.class);
                     i.putExtra("level", 1);
                     startActivity(i);unregisterReceiver(connectivityRecevier);finish();
@@ -61,7 +68,7 @@ public class theme extends AppCompatActivity implements FirebaseAuth.AuthStateLi
         C.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(theme!=3){
+                if(theme!=3){m.stop();
                     Intent i = new Intent(getApplicationContext(), chome.class);
                     i.putExtra("level", 1);
                     startActivity(i);unregisterReceiver(connectivityRecevier);finish();
@@ -72,7 +79,7 @@ public class theme extends AppCompatActivity implements FirebaseAuth.AuthStateLi
         E.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(theme!=4){
+                if(theme!=4){m.stop();
                     Intent i = new Intent(getApplicationContext(), mhome.class);
                     i.putExtra("level", 1);
                     startActivity(i);unregisterReceiver(connectivityRecevier);finish();
@@ -89,7 +96,7 @@ public class theme extends AppCompatActivity implements FirebaseAuth.AuthStateLi
     }
     private void changeActivity(){
         Intent i=new Intent(this,OfflineActivity.class);
-        this.onPause();
+        this.onPause();m.stop();
         i.putExtra("activity","theme");
         startActivity(i);
     }
@@ -159,7 +166,7 @@ public class theme extends AppCompatActivity implements FirebaseAuth.AuthStateLi
 
     @Override
     public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-        if (firebaseAuth.getCurrentUser() == null) {
+        if (firebaseAuth.getCurrentUser() == null) {m.stop();
             Intent i=new Intent(getApplicationContext(),register.class);
             startActivity(i);unregisterReceiver(connectivityRecevier);
             finish();
@@ -171,20 +178,22 @@ public class theme extends AppCompatActivity implements FirebaseAuth.AuthStateLi
         AlertDialog.Builder builder = new AlertDialog.Builder(theme.this);
         builder.setTitle(R.string.app_name);
         builder.setIcon(R.mipmap.ic_launcher);
-        builder.setMessage("Do you want to exit?")
+        builder.setMessage("Where to go?")
                 .setCancelable(false)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
+                .setPositiveButton("BACK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {m.stop();
+                        Intent i=new Intent(getApplicationContext(),Improve.class);
+                        startActivity(i);unregisterReceiver(connectivityRecevier);
                         finish();
                     }
                 })
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
+                .setNegativeButton("EXIT", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {m.stop();
+                        finish();
                         dialog.cancel();
                     }
                 });
         AlertDialog alert = builder.create();
         alert.show();
-
     }
 }

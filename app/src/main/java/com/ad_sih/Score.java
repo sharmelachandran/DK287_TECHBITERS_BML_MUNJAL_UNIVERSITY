@@ -1,9 +1,16 @@
 package com.ad_sih;
 
+import android.Manifest;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -13,36 +20,72 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
+import java.util.Objects;
 
 public class Score extends AppCompatActivity implements ConnectivityRecevier.ConnectivityRecevierListener{
-    Button H;
+    Button H,M,I;
     TextView tv;
     int flag;
     String Theme;
+    String mfilepath,mailid,mailid1,currentdate,date,playerdetails,ADAS,MINI_COG,MMSE,ADFINDER;
     int f1=0,f2=0,f3=0,f4=0;
     ConnectivityRecevier connectivityRecevier=new ConnectivityRecevier();
+    private static final int STORAGE_CODE =1000;
+    private StorageReference mStorageRef;
+    MediaPlayer m;
     int c=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_score);
+        m= MediaPlayer.create(getApplicationContext(),R.raw.m2);
+        m.start();
         checkInternetConnection();
         flag=getIntent().getIntExtra("theme",1);
         Theme=getIntent().getStringExtra("total");
         H=findViewById(R.id.h);
+        M=findViewById(R.id.map);
+        I=findViewById(R.id.improve);
         tv=findViewById(R.id.textView1);
         H.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) {m.stop();
                  Intent i=new Intent(getApplicationContext(),theme.class);
                  i.putExtra("theme",flag);
+                startActivity(i);unregisterReceiver(connectivityRecevier);finish();
+            }
+        });
+        M.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {m.stop();
+                Intent viewIntent =
+                        new Intent("android.intent.action.VIEW",
+                                Uri.parse("https://www.google.co.in/maps/search/nearby+neurologist/"));
+                startActivity(viewIntent);
+            }
+        });
+        I.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {m.stop();
+                Intent i=new Intent(getApplicationContext(),Improve.class);
                 startActivity(i);unregisterReceiver(connectivityRecevier);finish();
             }
         });
@@ -94,6 +137,9 @@ public class Score extends AppCompatActivity implements ConnectivityRecevier.Con
                 L[8] =(Long)snapshot.child("Clock").getValue();
                 L[9] =(Long)snapshot.child("Pentagon").getValue();
                 Long x =L[0]+L[1]+L[2]+L[3]+L[4]+L[5]+L[6]+L[7]+L[8]+L[9];
+                ADFINDER="\nAD-FINDER SCORE:\nOrientation:"+L[0]+"\nWord Registration: "+L[1]+"\nMaze-Wrong attempt Ignored: "+L[2]
+                        +"\nInstruction Following: "+L[3]+"\nSequence of Activity: "+L[4]+"\nWord Recall: "+L[5]+"\nNumber Crossing: "
+                        +L[6]+"\nObject Recognition: "+L[7]+"\nClock Drawing: "+L[8]+"\nInterlocking Diagram: "+L[9]+"\nTotal: "+x;
                 register0.child("Total").setValue(x);
             }
             @Override
@@ -114,6 +160,9 @@ public class Score extends AppCompatActivity implements ConnectivityRecevier.Con
                 L[4] =(Long)snapshot.child("Object_recognition").child("score").getValue();
 
                 Long x=((L[0]+L[1]+L[2]+L[3]+L[4]+L[5])*30)/18;
+
+                MMSE="\nMMSE SCORE:\nOrientation:"+L[0]+"\nWord Registration: "+L[1]+"\nInstruction Following: "+L[2]
+                        +"\nWord Recall: "+L[3]+"\nObject Recognition: "+L[4]+"\nInterlocking Diagram: "+L[5]+"\nTotal: "+x;
                 register1.child("Total").setValue(x);
                 if(x<=24)
                     f1=1;
@@ -136,6 +185,8 @@ public class Score extends AppCompatActivity implements ConnectivityRecevier.Con
                 L[0] =(Long)snapshot.child("Word_recall").getValue();
                 L[1] =(Long)snapshot.child("Clock").getValue();
                 Long x=L[0]+L[1];
+                MMSE="\nMINI-COG SCORE:\nWord Recall: "+L[0]+"\nClock Drawing: "+L[1]+"\nTotal: "+x;
+
                 if(x<4)
                     f2=1;
                 else
@@ -177,6 +228,9 @@ public class Score extends AppCompatActivity implements ConnectivityRecevier.Con
                     x+=L[6];
                 if(x!=null){
                     x=(x*70)/43;
+                    ADAS="\nADAS SCORE:\nOrientation:"+L[0]+"\nMaze-Wrong attempt: "+L[1]
+                            +"\nInstruction Following: "+L[2]+"\nSequence of Activity: "+L[3]+"\nWord Recall: "+L[4]+"\nNumber Crossing: "
+                            +L[5]+"\nObject Recognition: "+L[6]+"\nTotal: "+x;
                 register3.child("Total").setValue(x);
                 }
                 else
@@ -194,14 +248,9 @@ public class Score extends AppCompatActivity implements ConnectivityRecevier.Con
             }
         });
         compare();
-        /*if(f1==1&&f2==1&&f3==1)
-            f4=1;
-        if(f4==1)
-            Toast.makeText(getApplicationContext(),"You have symptoms of AD go and have medical checkup as soon as possible",Toast.LENGTH_SHORT).show();
-        else
-            Toast.makeText(getApplicationContext(),"You are perfect..\n you don't have dementia",Toast.LENGTH_SHORT).show();*/
     }
     private void compare(){
+
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         final DatabaseReference total= firebaseDatabase.getReference().child(FirebaseAuth.getInstance().getUid()).child(Theme);
         total.addValueEventListener(new ValueEventListener() {
@@ -212,11 +261,37 @@ public class Score extends AppCompatActivity implements ConnectivityRecevier.Con
                 Long mini=(Long)snapshot.child("MINI_COG").child("Total").getValue();
                 Long adfinder=(Long)snapshot.child("AD_Finder").child("Total").getValue();
                 if(adas!=null && mmse !=null && mini!=null) {
-                    if (adas >= 18 && mmse <= 24 && mini <= 3)
+                    if (adas >= 18 && mmse <= 24 && mini <= 3) {
                         tv.setText("You have symptoms of AD go and have medical checkup as soon as possible");
-                    else
+                        if(Build.VERSION.SDK_INT>Build.VERSION_CODES.M){
+                            if(checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)== PackageManager.PERMISSION_DENIED){
+                                String[] permissions={Manifest.permission.WRITE_EXTERNAL_STORAGE};
+                                requestPermissions(permissions, STORAGE_CODE);
+                            }
+                            else{
+                                savepdf();
+                            }
+                        }else{
+                            savepdf();
+                        }
+                    }
+                    else {
                         tv.setText("You are perfect..\n you don't have dementia");
-                        //Toast.makeText(getApplicationContext(),"You have symptoms of AD go and have medical checkup as soon as possible",Toast.LENGTH_SHORT).show();
+                        I.setVisibility(View.VISIBLE);
+                        M.setVisibility(View.VISIBLE);
+                        if(Build.VERSION.SDK_INT>Build.VERSION_CODES.M){
+                            if(checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)== PackageManager.PERMISSION_DENIED){
+                                String[] permissions={Manifest.permission.WRITE_EXTERNAL_STORAGE};
+                                requestPermissions(permissions, STORAGE_CODE);
+                            }
+                            else{
+                                savepdf();
+                            }
+                        }else{
+                            savepdf();
+                        }
+
+                    }
                 }
                 else{
                     tv.setText("Try some other theme for better results");
@@ -228,6 +303,84 @@ public class Score extends AppCompatActivity implements ConnectivityRecevier.Con
 
             }
         });
+    }
+    private void savepdf() {
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        final DatabaseReference total1= firebaseDatabase.getReference().child(FirebaseAuth.getInstance().getUid());
+        total1.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String n=snapshot.child("name").getValue().toString();
+                String a=snapshot.child("age").getValue().toString();
+                String g=snapshot.child("gender").getValue().toString();
+                String m1=snapshot.child("mail1").getValue().toString();
+                String m2=snapshot.child("mail2").getValue().toString();
+                mailid=m2;
+                mailid1=m1;
+                playerdetails="Person Details:\n"+n+",\n"+a+","+g+",\n"+m1+",\nCare taker: "+m2+".";
+                Toast.makeText(getApplicationContext(),""+playerdetails,Toast.LENGTH_SHORT).show();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        final com.itextpdf.text.Document mDoc=new Document();
+        String mfilename=new SimpleDateFormat("MMdd_HHmm", Locale.getDefault()).format(System.currentTimeMillis());
+        final String p=""+Theme+":"+mfilename;//nn=pname+pid
+        mfilepath= Environment.getExternalStorageDirectory()+"/"+p+".pdf";
+        try {
+            PdfWriter.getInstance(mDoc,new FileOutputStream(mfilepath));
+            mDoc.addCreationDate();
+            mDoc.setMargins(10,10,10,10);
+            mDoc.setMarginMirroringTopBottom(true);
+            mDoc.addTitle("AD-FINDER");
+            mDoc.open();
+            mDoc.left(100);
+            mDoc.add(new Paragraph("\n Alzheimer's Disease Assessment"));
+            mDoc.add(new Paragraph("\nAssessed on "+currentdate+"\n"));
+            mDoc.add(new Paragraph("\n"+playerdetails+"\n"));
+            mDoc.add(new Paragraph("\n"+ADFINDER+"\n"));
+            mDoc.add(new Paragraph("\n"+MMSE+"\n"));
+            mDoc.add(new Paragraph("\n"+MINI_COG+"\n"));
+            mDoc.add(new Paragraph("\n"+ADAS+"\n"));
+            mDoc.add(new Paragraph());
+            mDoc.add(new Paragraph("\n\n"));
+            String provider="Results Provided by AD-Finder.";
+            mDoc.add(new Paragraph(provider));
+            mDoc.close();
+            final Uri file = Uri.fromFile(new File(mfilepath));
+            final StorageReference riversRef = mStorageRef.child(FirebaseAuth.getInstance().getUid());
+            riversRef.putFile(file).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    riversRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            String url=String.valueOf(uri);
+                            String downloadUrl=url;
+                            String mail=mailid;
+                            String msg=downloadUrl;
+                            String sub="AD-Finder Assessment Report";
+                            JavaMailAPI javaMailAPI=new JavaMailAPI(Score.this,mail,sub,msg);
+                            javaMailAPI.execute();
+                            mail=mailid1;
+                            JavaMailAPI javaMailAPI1=new JavaMailAPI(Score.this,mail,sub,msg);
+                            javaMailAPI1.execute();
+                            M.setVisibility(View.VISIBLE);
+
+                        }
+                    });
+                    Toast.makeText(getBaseContext(), "pdf stored", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+
+        }catch (Exception e){
+            Toast.makeText(this,e.getMessage(),Toast.LENGTH_LONG).show();
+        }
+        // sendMail();
+        Toast.makeText(this,"you can now send email ",Toast.LENGTH_LONG).show();
 
     }
     @Override

@@ -2,6 +2,7 @@ package com.ad_sih;
 
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Handler;
@@ -37,6 +38,7 @@ public class frecall extends AppCompatActivity implements ConnectivityRecevier.C
     private String str[]={"Carrot","Banana","Tomato"};
     int i=0,count=0,flag0=0,flag1=0,flag2=0,l=5,ccout=0;
     String s;
+    MediaPlayer m;
     private static final int REQUEST_CODE_SPEECH_INPUT=1000;
     View v1,v2;
     private GuideView mGuideView;
@@ -47,6 +49,8 @@ public class frecall extends AppCompatActivity implements ConnectivityRecevier.C
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_frecall);
+        m= MediaPlayer.create(getApplicationContext(),R.raw.m2);
+        m.start();
         checkInternetConnection();
         v1=findViewById(R.id.textView3);
         v2=findViewById(R.id.speech);
@@ -84,7 +88,7 @@ public class frecall extends AppCompatActivity implements ConnectivityRecevier.C
 
         H.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) {m.stop();
                 Intent i=new Intent(getApplicationContext(),fhome.class);
                 i.putExtra("level",5);
                 startActivity(i);unregisterReceiver(connectivityRecevier);finish();
@@ -250,7 +254,7 @@ public class frecall extends AppCompatActivity implements ConnectivityRecevier.C
                 .isCancellable(false)
                 .OnPositiveClicked(new TTFancyGifDialogListener() {
                     @Override
-                    public void OnClick() {
+                    public void OnClick() {m.stop();
                         Intent i = new Intent(getApplicationContext(), fhome.class);
                         i.putExtra("level",6);
                         startActivity(i);unregisterReceiver(connectivityRecevier);finish();

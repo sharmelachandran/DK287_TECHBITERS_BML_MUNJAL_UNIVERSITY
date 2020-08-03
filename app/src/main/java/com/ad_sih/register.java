@@ -1,6 +1,7 @@
 package com.ad_sih;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -26,16 +27,19 @@ public class register extends AppCompatActivity {
     TextView tv;
     Button btn;
     Animation top,bottom;
+    MediaPlayer m;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_register);
+        m= MediaPlayer.create(getApplicationContext(),R.raw.m2);
+        m.start();
         tv=findViewById(R.id.textView);
         btn=findViewById(R.id.button);
         tv.setAnimation(top);
         btn.setAnimation(bottom);
-        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+        if (FirebaseAuth.getInstance().getCurrentUser() != null) {m.stop();
             startActivity(new Intent(this, theme.class));
             this.finish();
         }
@@ -77,7 +81,7 @@ public class register extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 // Successfully signed in
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                assert user != null;
+                assert user != null;m.stop();
                 //This is a New User
                 Toast.makeText(getApplicationContext(), "Welcome to AD-Finder!!", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(this, profile.class);
@@ -90,7 +94,7 @@ public class register extends AppCompatActivity {
                 } else {
                     Log.e(TAG, "onActivityResult: ", response.getError());
                 }
-                Intent i=new Intent(getApplicationContext(),MainActivity.class);
+                Intent i=new Intent(getApplicationContext(),MainActivity.class);m.stop();
                 startActivity(i);
                 this.finish();
             }

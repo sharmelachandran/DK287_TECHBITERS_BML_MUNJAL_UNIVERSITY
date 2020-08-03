@@ -2,6 +2,7 @@ package com.ad_sih;
 
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -22,6 +23,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Locale;
+import java.util.Objects;
 
 import pl.droidsonroids.gif.GifImageView;
 import smartdevelop.ir.eram.showcaseviewlib.GuideView;
@@ -39,6 +41,7 @@ public class arrow extends AppCompatActivity implements ConnectivityRecevier.Con
     int count=0;
     int fl=0;
     View v1;
+    MediaPlayer m;
     private GuideView mGuideView;
     private GuideView.Builder builder;
     String arr[]={"Click LEFT Arrow","Click UP Arrow","Click DOWN Arrow","Click RIGHT Arrow","Click LEFT Arrow","Click DOWN Arrow","Click LEFT Arrow","Click RIGHT Arrow","Click UP Arrow","Click DOWN Arrow"};
@@ -51,6 +54,8 @@ public class arrow extends AppCompatActivity implements ConnectivityRecevier.Con
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_arrow);
+        m= MediaPlayer.create(getApplicationContext(),R.raw.m2);
+        m.start();
         checkInternetConnection();
         v1=findViewById(R.id.textView);
         tv=(TextView)findViewById(R.id.textView);
@@ -88,6 +93,7 @@ public class arrow extends AppCompatActivity implements ConnectivityRecevier.Con
                 Intent i=new Intent(getApplicationContext(),home.class);
                 i.putExtra("level",6);
                 startActivity(i);unregisterReceiver(connectivityRecevier);
+                m.stop();
                 finish();
             }
         });
@@ -221,7 +227,7 @@ public class arrow extends AppCompatActivity implements ConnectivityRecevier.Con
     private void changeActivity(){
         Intent i=new Intent(this,OfflineActivity.class);
         this.onPause();
-        i.putExtra("activity","arrow");
+        i.putExtra("activity","arrow");m.stop();
         startActivity(i);
     }
     @Override
@@ -256,7 +262,7 @@ public class arrow extends AppCompatActivity implements ConnectivityRecevier.Con
         if(count==10)
             Toast.makeText(getApplicationContext(),"CORRECT ANSWER !!! CONGRATULATIONS",Toast.LENGTH_LONG).show();
         FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
-        DatabaseReference register = firebaseDatabase.getReference().child(FirebaseAuth.getInstance().getUid()).child("Nature");
+        DatabaseReference register = firebaseDatabase.getReference().child(Objects.requireNonNull(FirebaseAuth.getInstance().getUid())).child("Nature");
         int MMSE_SCORE=(count*4)/10;
         int ADAS_SCORE=(wcount*5)/10;
         int AD_SCORE=(count*5)/10;
@@ -268,7 +274,7 @@ public class arrow extends AppCompatActivity implements ConnectivityRecevier.Con
         register.child("ADAS").child("Instruction_following").child("Time_taken").setValue(Time_used_to_solve);
 
         Intent e=new Intent(getApplicationContext(),home.class);
-        e.putExtra("level",7);
+        e.putExtra("level",7);m.stop();
         startActivity(e);unregisterReceiver(connectivityRecevier);
         finish();
     }

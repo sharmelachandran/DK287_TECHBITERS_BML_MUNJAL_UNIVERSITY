@@ -4,6 +4,7 @@ package com.ad_sih;
 
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -46,6 +47,7 @@ public class marrow extends AppCompatActivity implements ConnectivityRecevier.Co
     private GuideView mGuideView;
     private GuideView.Builder builder;
     ConnectivityRecevier connectivityRecevier=new ConnectivityRecevier();
+    MediaPlayer m;
     String arr[]={"Click UP Arrow","Click DOWN Arrow","Click RIGHT Arrow","Click LEFT Arrow","Click RIGHT Arrow","Click UP Arrow","Click LEFT Arrow","Click DOWN Arrow","Click UP Arrow","Click RIGHT Arrow"};
     private static final long START_TIME=60000;//in milliseconds 60000/60=1mins
     private CountDownTimer countDownTimer;
@@ -55,6 +57,8 @@ public class marrow extends AppCompatActivity implements ConnectivityRecevier.Co
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_marrow);
+        m= MediaPlayer.create(getApplicationContext(),R.raw.m2);
+        m.start();
         checkInternetConnection();
         v1=findViewById(R.id.textView);
         tv=(TextView)findViewById(R.id.textView);
@@ -84,7 +88,7 @@ public class marrow extends AppCompatActivity implements ConnectivityRecevier.Co
         mGuideView.show();
         H.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) {m.stop();
                 Intent i=new Intent(getApplicationContext(),mhome.class);
                 i.putExtra("level",6);
                 startActivity(i);unregisterReceiver(connectivityRecevier);finish();
@@ -256,7 +260,7 @@ public class marrow extends AppCompatActivity implements ConnectivityRecevier.Co
         register.child("ADAS").child("Instruction_following").child("score").setValue(ADAS_SCORE);
         register.child("ADAS").child("Instruction_following").child("Time_taken").setValue(Time_used_to_solve);
         Intent e=new Intent(getApplicationContext(),mhome.class);
-        e.putExtra("level",7);
+        e.putExtra("level",7);m.stop();
         startActivity(e);unregisterReceiver(connectivityRecevier);finish();
     }
     private void startTimer(){

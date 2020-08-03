@@ -2,6 +2,7 @@ package com.ad_sih;
 
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Handler;
@@ -42,12 +43,15 @@ public class crecall extends AppCompatActivity implements ConnectivityRecevier.C
     View v1,v2;
     private GuideView mGuideView;
     private GuideView.Builder builder;
+    MediaPlayer m;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_crecall);
         checkInternetConnection();
+        m= MediaPlayer.create(getApplicationContext(),R.raw.m2);
+        m.start();
         v1=findViewById(R.id.textView3);
         v2=findViewById(R.id.speech);
         S1=findViewById(R.id.speech);
@@ -86,7 +90,7 @@ public class crecall extends AppCompatActivity implements ConnectivityRecevier.C
             @Override
             public void onClick(View v) {
                 Intent i=new Intent(getApplicationContext(),chome.class);
-                i.putExtra("level",5);
+                i.putExtra("level",5);m.stop();
                 startActivity(i);finish();unregisterReceiver(connectivityRecevier);
             }
         });
@@ -222,6 +226,7 @@ public class crecall extends AppCompatActivity implements ConnectivityRecevier.C
                 .OnPositiveClicked(new TTFancyGifDialogListener() {
                     @Override
                     public void OnClick() {
+                        m.stop();
                         Intent i = new Intent(getApplicationContext(),chome.class);//need to change
                         i.putExtra("level",6);
                         startActivity(i);finish();unregisterReceiver(connectivityRecevier);

@@ -2,6 +2,7 @@ package com.ad_sih;
 
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -34,6 +35,7 @@ public class coject extends AppCompatActivity implements ConnectivityRecevier.Co
     private static final long START_TIME=60000;//in milliseconds 60000/60=1mins
     private CountDownTimer countDownTimer;
     private long timeleftmilli=START_TIME;
+    MediaPlayer m;
     ConnectivityRecevier connectivityRecevier=new ConnectivityRecevier();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +43,8 @@ public class coject extends AppCompatActivity implements ConnectivityRecevier.Co
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_coject);
         checkInternetConnection();
+        m= MediaPlayer.create(getApplicationContext(),R.raw.m2);
+        m.start();
         fball=findViewById(R.id.textView6);
         stump=findViewById(R.id.textView7);
         bat=findViewById(R.id.textView8);
@@ -56,7 +60,7 @@ public class coject extends AppCompatActivity implements ConnectivityRecevier.Co
             public void onClick(View v) {
                 countDownTimer.cancel();
                 Intent i=new Intent(getApplicationContext(),chome.class);
-                i.putExtra("level",9);
+                i.putExtra("level",9);m.stop();
                 startActivity(i);finish();unregisterReceiver(connectivityRecevier);
             }
         });
@@ -214,7 +218,7 @@ public class coject extends AppCompatActivity implements ConnectivityRecevier.Co
             Toast.makeText(getApplicationContext(), "WOW!!! Done Good", Toast.LENGTH_LONG).show();
         else if (ccount < 3 && wcount != 0)
             Toast.makeText(getApplicationContext(), "BETTER LUCK NEXT TIME :(", Toast.LENGTH_LONG).show();
-        Intent i=new Intent(getApplicationContext(),  Score.class);
+        Intent i=new Intent(getApplicationContext(),  Score.class);m.stop();
         i.putExtra("theme",3);
         i.putExtra("total","Sports");
         startActivity(i);finish();unregisterReceiver(connectivityRecevier);

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -40,7 +41,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class profile extends AppCompatActivity implements AdapterView.OnItemSelectedListener,ConnectivityRecevier.ConnectivityRecevierListener {
     CircleImageView profileImageView;
-    TextInputEditText displayName,age;
+    TextInputEditText displayName,age,ma2;
     RadioButton male,female,others;
     Spinner day;
     TextView date,time;
@@ -50,17 +51,20 @@ public class profile extends AppCompatActivity implements AdapterView.OnItemSele
     ProgressBar progressBar;
     String DISPLAY_NAME = null;
     String GENDER=null,AGE=null,DATE=null;
-    String CURRENT_DAY=null,CUREENT_DATE=null,CURRENT_MONTH=null,CURRENT_YEAR=null,CURRENT_TIME=null;
+    String CURRENT_DAY=null,CUREENT_DATE=null,CURRENT_MONTH=null,CURRENT_YEAR=null,CURRENT_TIME=null,Mail,Mail2;
 
     int TAKE_IMAGE_CODE = 1001,Profile_score=0;
     FirebaseUser firebaseUser;
     private static final String TAG = "profile";
+    MediaPlayer m;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_profile);
+        m= MediaPlayer.create(getApplicationContext(),R.raw.m2);
+        m.start();
         checkInternetConnection();
         profileImageView=findViewById(R.id.profileimage);
         displayName=findViewById(R.id.name);
@@ -69,6 +73,7 @@ public class profile extends AppCompatActivity implements AdapterView.OnItemSele
         female=findViewById(R.id.f);
         others=findViewById(R.id.o);
         age=findViewById(R.id.age);
+        ma2=findViewById(R.id.m2);
         date=findViewById(R.id.date);
         time=findViewById(R.id.time);
         day=findViewById(R.id.day);
@@ -84,6 +89,7 @@ public class profile extends AppCompatActivity implements AdapterView.OnItemSele
             if (user.getDisplayName() != null) {
                 displayName.setText(user.getDisplayName());
                 displayName.setSelection(user.getDisplayName().length());
+                Mail= user.getEmail();
             }
         }
         progressBar.setVisibility(View.GONE);
@@ -195,7 +201,7 @@ public class profile extends AppCompatActivity implements AdapterView.OnItemSele
         DISPLAY_NAME = displayName.getText().toString();
         AGE=age.getText().toString();
         CURRENT_TIME=time.getText().toString();
-
+        Mail2=ma2.getText().toString();
         if (TextUtils.isEmpty(DISPLAY_NAME) &&
                 TextUtils.isEmpty(AGE) && TextUtils.isEmpty(GENDER) && TextUtils.isEmpty(date.getText().toString()) &&
                 TextUtils.isEmpty(time.getText().toString())&& TextUtils.isEmpty(CURRENT_DAY)) {
@@ -251,10 +257,11 @@ public class profile extends AppCompatActivity implements AdapterView.OnItemSele
     {
         FirebaseDatabase firebaseDatabase= FirebaseDatabase.getInstance();
         DatabaseReference register = firebaseDatabase.getReference().child(FirebaseAuth.getInstance().getUid());
-        //String score=String.valueOf(Profile_score);
-        player reg = new player(DISPLAY_NAME,AGE,GENDER,Profile_score);
+        player reg = new player(DISPLAY_NAME,AGE,GENDER,Mail,Mail2,Profile_score);
         register.setValue(reg);
-        Intent i=new Intent(getApplicationContext(),theme.class);
+        register.child("mail1").setValue(Mail);
+        register.child("mail2").setValue(Mail2);
+        Intent i=new Intent(getApplicationContext(),Improve.class);m.stop();
         startActivity(i);unregisterReceiver(connectivityRecevier);finish();
     }
     @Override

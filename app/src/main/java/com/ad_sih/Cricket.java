@@ -2,6 +2,7 @@ package com.ad_sih;
 
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
@@ -42,12 +43,15 @@ public class Cricket extends AppCompatActivity implements ConnectivityRecevier.C
     View v1,v2,v3,v4,v5;
     private GuideView mGuideView;
     private GuideView.Builder builder;
+    MediaPlayer m;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_cricket);
         checkInternetConnection();
+        m= MediaPlayer.create(getApplicationContext(),R.raw.m2);
+        m.start();
         v1=findViewById(R.id.h);
         v3=findViewById(R.id.trails);
         v4=findViewById(R.id.voice);
@@ -98,7 +102,7 @@ public class Cricket extends AppCompatActivity implements ConnectivityRecevier.C
             @Override
             public void onClick(View v) {
                 Intent i=new Intent(getApplicationContext(),chome.class);
-                i.putExtra("level",1);
+                i.putExtra("level",1);m.stop();
                 startActivity(i);unregisterReceiver(connectivityRecevier);finish();
             }
         });
@@ -247,7 +251,7 @@ public class Cricket extends AppCompatActivity implements ConnectivityRecevier.C
         register.child("MMSE").child("Word_registration").setValue(ccount);
         register.child("AD_Finder").child("Word_registration").setValue(ccount);
         Intent i = new Intent(getApplicationContext(), chome.class);
-        i.putExtra("level",2);
+        i.putExtra("level",2);m.stop();
         startActivity(i);unregisterReceiver(connectivityRecevier);finish();
 
     }

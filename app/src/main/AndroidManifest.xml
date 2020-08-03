@@ -2,142 +2,191 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.ad_sih">
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:name=".MyApp"
         android:allowBackup="true"
         android:hardwareAccelerated="false"
-        android:largeHeap="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".clockdrawing"
+        <activity android:name=".Chooselevel"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity"/>
-        <activity android:name=".diagram"
+            tools:ignore="LockedOrientationActivity" />
+        <activity android:name=".Improve"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity"/>
-        <activity android:name=".mnumbercross"
+            tools:ignore="LockedOrientationActivity" />
+        <activity android:name=".Medium"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity android:name=".MenuActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity android:name=".Tictactoe"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity android:name=".GameActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".clockdrawing"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".diagram"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".mnumbercross"
             android:screenOrientation="landscape"
-            tools:ignore="LockedOrientationActivity"/>
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".mobject"
             android:screenOrientation="landscape"
             tools:ignore="LockedOrientationActivity" />
-        <activity android:name=".mrecall"
+        <activity
+            android:name=".mrecall"
             android:screenOrientation="landscape"
-            tools:ignore="LockedOrientationActivity"/>
-        <activity android:name=".Flim"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".Flim"
             android:screenOrientation="landscape"
-            tools:ignore="LockedOrientationActivity"/>
-        <activity android:name=".marrow"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".marrow"
             android:screenOrientation="landscape"
-            tools:ignore="LockedOrientationActivity"/>
-        <activity android:name=".mjumble"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".mjumble"
             android:screenOrientation="landscape"
-            tools:ignore="LockedOrientationActivity"/>
-        <activity android:name=".mmaze"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".mmaze"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity"/>
-        <activity android:name=".mhome"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".mhome"
             android:screenOrientation="landscape"
-            tools:ignore="LockedOrientationActivity"/>
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".coject"
             android:screenOrientation="landscape"
             tools:ignore="LockedOrientationActivity" />
-        <activity android:name=".cjumble"
+        <activity
+            android:name=".cjumble"
             android:screenOrientation="landscape"
-            tools:ignore="LockedOrientationActivity"/>
-        <activity android:name=".cmaze"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".cmaze"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity"/>
-        <activity android:name=".cnumbercross"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".cnumbercross"
             android:screenOrientation="landscape"
-            tools:ignore="LockedOrientationActivity"/>
-        <activity android:name=".carrow"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".carrow"
             android:screenOrientation="landscape"
-            tools:ignore="LockedOrientationActivity"/>
-        <activity android:name=".crecall"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".crecall"
             android:screenOrientation="landscape"
-            tools:ignore="LockedOrientationActivity"/>
-        <activity android:name=".Cricket"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".Cricket"
             android:screenOrientation="landscape"
-            tools:ignore="LockedOrientationActivity"/>
-        <activity android:name=".chome"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".chome"
             android:screenOrientation="landscape"
-            tools:ignore="LockedOrientationActivity"/>
-        <activity android:name=".fhome"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".fhome"
             android:screenOrientation="landscape"
-            tools:ignore="LockedOrientationActivity"/>
-        <activity android:name=".Food"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".Food"
             android:screenOrientation="landscape"
-            tools:ignore="LockedOrientationActivity"/>
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".fobject"
             android:screenOrientation="landscape"
             tools:ignore="LockedOrientationActivity" />
-        <activity android:name=".fnumbercross"
+        <activity
+            android:name=".fnumbercross"
             android:screenOrientation="landscape"
-            tools:ignore="LockedOrientationActivity"/>
-        <activity android:name=".farrow"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".farrow"
             android:screenOrientation="landscape"
-            tools:ignore="LockedOrientationActivity"/>
-        <activity android:name=".jumble1"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".jumble1"
             android:screenOrientation="landscape"
-            tools:ignore="LockedOrientationActivity"/>
-        <activity android:name=".frecall"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".frecall"
             android:screenOrientation="landscape"
-            tools:ignore="LockedOrientationActivity"/>
-        <activity android:name=".fmaze"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".fmaze"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity"/>
-        <activity android:name=".home"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".home"
             android:screenOrientation="landscape"
-            tools:ignore="LockedOrientationActivity"/>
-
-        <activity android:name=".Score"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".Score"
             android:screenOrientation="landscape"
-            tools:ignore="LockedOrientationActivity"/>
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".nobject"
             android:screenOrientation="landscape"
             tools:ignore="LockedOrientationActivity" />
-        <activity android:name=".numbercross"
-            android:screenOrientation="landscape"
-            tools:ignore="LockedOrientationActivity"/>
-        <activity android:name=".arrow"
-            android:screenOrientation="landscape"
-            tools:ignore="LockedOrientationActivity"/>
-        <activity android:name=".nrecall"
-            android:screenOrientation="landscape"
-            tools:ignore="LockedOrientationActivity"/>
-        <activity android:name=".jumble2"
+        <activity
+            android:name=".numbercross"
             android:screenOrientation="landscape"
             tools:ignore="LockedOrientationActivity" />
-        <activity android:name=".nmaze"
-            android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity"/>
-        <activity android:name=".Nature"
+        <activity
+            android:name=".arrow"
             android:screenOrientation="landscape"
-            tools:ignore="LockedOrientationActivity"/>
-        <activity android:name=".OfflineActivity"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".nrecall"
             android:screenOrientation="landscape"
-            tools:ignore="LockedOrientationActivity"/>
-        <activity android:name=".theme"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".jumble2"
             android:screenOrientation="landscape"
-            tools:ignore="LockedOrientationActivity"/>
-        <activity android:name=".profile"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".nmaze"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity"/>
-        <activity android:name=".register"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".Nature"
+            android:screenOrientation="landscape"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".OfflineActivity"
+            android:screenOrientation="landscape"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".theme"
+            android:screenOrientation="landscape"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".profile"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity"/>
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".register"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -146,5 +195,11 @@
             </intent-filter>
         </activity>
     </application>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

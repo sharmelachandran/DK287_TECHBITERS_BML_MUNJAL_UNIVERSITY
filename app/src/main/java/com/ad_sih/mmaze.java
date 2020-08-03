@@ -2,6 +2,7 @@ package com.ad_sih;
 
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -48,6 +49,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
     int wcount=0;
     View v1,v2;
     private GuideView mGuideView;
+    MediaPlayer M;
     private GuideView.Builder builder;
     ConnectivityRecevier connectivityRecevier=new ConnectivityRecevier();
     @Override
@@ -56,6 +58,8 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_mmaze);
+        M= MediaPlayer.create(getApplicationContext(),R.raw.m2);
+        M.start();
         checkInternetConnection();
         v1=findViewById(R.id.time);
         v2=findViewById(R.id.imgc);
@@ -163,7 +167,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
         updatingForDynamicLocationViews();
         H.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) {M.stop();
                 countDownTimer.cancel();
                 Intent i=new Intent(getApplicationContext(),mhome.class);
                 i.putExtra("level",2);
@@ -1043,7 +1047,7 @@ public class mmaze extends AppCompatActivity implements ConnectivityRecevier.Con
         register.child("AD_Finder").child("Maze").child("Wrong_attempt_Ignored").setValue(adfinder_count);
         register.child("AD_Finder").child("Maze").child("Time_taken").setValue(Time_used_to_solve);
         Intent i=new Intent(getApplicationContext(),mhome.class);
-        i.putExtra("level",3);
+        i.putExtra("level",3);M.stop();
         startActivity(i);unregisterReceiver(connectivityRecevier);finish();
     }
     private  void startAnimation(){

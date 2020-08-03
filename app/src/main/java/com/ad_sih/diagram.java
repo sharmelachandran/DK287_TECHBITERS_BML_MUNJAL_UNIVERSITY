@@ -10,6 +10,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -58,9 +59,10 @@ public class diagram extends AppCompatActivity implements ConnectivityRecevier.C
     Canvas canvas;
     Button button,btn,H;
     private  String theme,store;
-    private int pentagon_score;
+    private int pentagon_score=0;
     private static final int PICK_FILE=1023;
     ConnectivityRecevier connectivityRecevier=new ConnectivityRecevier();
+    MediaPlayer m;
     //private DatabaseReference ref;
     MyCanvas myCanvas;
     @Override
@@ -68,6 +70,8 @@ public class diagram extends AppCompatActivity implements ConnectivityRecevier.C
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_diagram);
+        m= MediaPlayer.create(getApplicationContext(),R.raw.m2);
+        m.start();
         checkInternetConnection();
         theme=getIntent().getStringExtra("theme");
         ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.READ_EXTERNAL_STORAGE}, PackageManager.PERMISSION_GRANTED);
@@ -89,6 +93,7 @@ public class diagram extends AppCompatActivity implements ConnectivityRecevier.C
         H.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                m.stop();
                 if(theme.equals("nature")) {
                     Intent i = new Intent(getApplicationContext(), home.class);
                     i.putExtra("level", 8);
@@ -136,6 +141,7 @@ public class diagram extends AppCompatActivity implements ConnectivityRecevier.C
             @Override
             public void onClick(View v) {
                 //myCanvas.onDraw();
+                m.stop();
                 Intent i=new Intent(getApplicationContext(),diagram.class);
                 i.putExtra("theme",theme);
                 startActivity(i);unregisterReceiver(connectivityRecevier);finish();
@@ -270,7 +276,7 @@ public class diagram extends AppCompatActivity implements ConnectivityRecevier.C
         root.setDrawingCacheEnabled(true);
         File file=new File(filename);
         file.getParentFile().mkdir();
-        String postUrl = "http://ec2-54-67-30-22.us-west-1.compute.amazonaws.com:5000/predict";//aws instance url
+        String postUrl = "http://ec2-3-101-34-58.us-west-1.compute.amazonaws.com:5000/predict";//aws instance url for interlocking diagram
         try{
             FileOutputStream fileOutputStream=new FileOutputStream(file);
             bitmap.compress(Bitmap.CompressFormat.JPEG,100,fileOutputStream);
@@ -340,10 +346,9 @@ public class diagram extends AppCompatActivity implements ConnectivityRecevier.C
                         public void onError(ANError error) {
                             // handle error
                             //Toast.makeText(getApplicationContext(),"Error in upload method",Toast.LENGTH_SHORT).show();
-
+                            //storedata(pentagon_score);
                         }
                     });
-
            /* StorageReference Folder= FirebaseStorage.getInstance().getReference().child("nature").child("clockdrawing");
             final StorageReference file_name=Folder.child("image"+uri1.getLastPathSegment());
             file_name.putFile(uri1).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -411,6 +416,7 @@ public class diagram extends AppCompatActivity implements ConnectivityRecevier.C
         register.child("MMSE").child("Pentagon").setValue(score);
         score=score*2;
         register.child("AD_Finder").child("Pentagon").setValue(score);
+        m.stop();
         if (theme.equals("nature")) {
             Intent i = new Intent(getApplicationContext(), home.class);
             i.putExtra("level", 9);
